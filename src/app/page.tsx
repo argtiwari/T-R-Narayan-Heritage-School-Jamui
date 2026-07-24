@@ -1,3 +1,5 @@
+import { HeroSection } from "@/components/home/hero-section";
+import { StatisticsSection } from "@/components/home/statistics-section";
 import { Navbar } from "@/components/layout/navbar";
 
 export default function Home() {
@@ -5,8 +7,9 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="min-h-[150vh] bg-school-surface pt-20">
-        <h1 className="sr-only">TR Narayan Heritage School</h1>
+      <main className="pt-[104px]">
+        <HeroSection />
+        <StatisticsSection />
       </main>
     </>
   );
