@@ -11,7 +11,7 @@ const chapters = [
     alt: "Teacher nurturing young students during a classroom learning activity",
     side: "left",
     tone: "ivory",
-    objectPosition: "center center",
+    imageClassName: "object-center",
   },
   {
     number: "02",
@@ -21,8 +21,8 @@ const chapters = [
     image: "/images/why-choose-us/wcu-curiosity.webp",
     alt: "Students exploring and learning together through a practical activity",
     side: "right",
-    tone: "white",
-    objectPosition: "center center",
+    tone: "cream",
+    imageClassName: "object-center",
   },
   {
     number: "03",
@@ -33,7 +33,7 @@ const chapters = [
     alt: "Student confidently participating in a school activity",
     side: "left",
     tone: "sage",
-    objectPosition: "center center",
+    imageClassName: "object-center",
   },
   {
     number: "04",
@@ -43,342 +43,594 @@ const chapters = [
     image: "/images/why-choose-us/wcu-flourish.webp",
     alt: "Students walking confidently together through the school campus",
     side: "right",
-    tone: "white",
-    objectPosition: "center center",
+    tone: "warm",
+    imageClassName: "object-center",
   },
 ] as const;
 
-const toneClasses = {
+type Chapter = (typeof chapters)[number];
+
+const toneClasses: Record<Chapter["tone"], string> = {
   ivory:
-    "bg-[linear-gradient(135deg,rgba(255,253,247,0.96),rgba(250,247,238,0.78))]",
-  white: "bg-[rgba(255,255,252,0.76)]",
+    "bg-[linear-gradient(135deg,rgba(255,254,249,0.78)_0%,rgba(250,247,237,0.56)_54%,rgba(247,246,234,0.42)_100%)]",
+  cream:
+    "bg-[linear-gradient(135deg,rgba(252,249,240,0.62)_0%,rgba(255,254,249,0.76)_52%,rgba(248,246,235,0.48)_100%)]",
   sage:
-    "bg-[linear-gradient(135deg,rgba(248,247,238,0.92),rgba(241,244,226,0.62))]",
+    "bg-[linear-gradient(135deg,rgba(249,248,239,0.72)_0%,rgba(241,244,225,0.5)_54%,rgba(250,248,240,0.58)_100%)]",
+  warm:
+    "bg-[linear-gradient(135deg,rgba(253,250,242,0.66)_0%,rgba(249,246,237,0.5)_48%,rgba(247,244,232,0.54)_100%)]",
 };
 
-function BranchArtwork() {
+/* -------------------------------------------------------------------------- */
+/*                                  INTRO                                     */
+/* -------------------------------------------------------------------------- */
+
+function BrandEyebrow() {
   return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-y-[180px] left-1/2 z-0 hidden w-[330px] -translate-x-1/2 lg:block"
-    >
-      <svg
-        viewBox="0 0 330 1900"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-full w-full overflow-visible"
+    <div className="mb-5 flex flex-col items-center">
+      <div
+        aria-hidden="true"
+        className="mb-3 flex items-center justify-center gap-2.5"
       >
-        {/* Main organic branch */}
-        <path
-          d="
-            M168 0
-            C174 145 122 205 135 340
-            C146 466 218 520 190 650
-            C166 765 106 833 132 960
-            C157 1085 222 1142 198 1272
-            C178 1390 120 1450 146 1575
-            C164 1660 188 1750 170 1900
-          "
-          stroke="rgba(113,125,48,0.18)"
-          strokeWidth="1.35"
-          strokeLinecap="round"
-        />
+        <span className="h-px w-7 bg-gradient-to-r from-transparent to-[#7b8530]/45 sm:w-10" />
 
-        {/* Branch 01 */}
-        <path
-          d="M136 330 C91 300 66 252 69 205"
-          stroke="rgba(113,125,48,0.15)"
-          strokeWidth="1.15"
-          strokeLinecap="round"
-        />
-
-        {/* Branch 02 */}
-        <path
-          d="M188 648 C234 607 260 554 258 500"
-          stroke="rgba(113,125,48,0.15)"
-          strokeWidth="1.15"
-          strokeLinecap="round"
-        />
-
-        {/* Branch 03 */}
-        <path
-          d="M134 960 C91 926 71 882 74 830"
-          stroke="rgba(113,125,48,0.15)"
-          strokeWidth="1.15"
-          strokeLinecap="round"
-        />
-
-        {/* Branch 04 */}
-        <path
-          d="M197 1270 C242 1235 265 1190 261 1138"
-          stroke="rgba(113,125,48,0.15)"
-          strokeWidth="1.15"
-          strokeLinecap="round"
-        />
-
-        {/* Leaves */}
-        <g stroke="rgba(113,125,48,0.24)" strokeWidth="1.15">
+        <svg
+          viewBox="0 0 46 20"
+          fill="none"
+          className="h-5 w-[46px]"
+        >
           <path
-            d="M67 205 C44 190 43 165 63 151 C79 169 80 190 67 205Z"
-            fill="rgba(239,242,215,0.38)"
+            d="M2 15.5C12 14.5 17.5 10.5 23 5"
+            stroke="#747D2C"
+            strokeOpacity=".6"
+            strokeWidth="1.1"
+            strokeLinecap="round"
           />
 
           <path
-            d="M258 500 C279 482 301 490 306 512 C283 521 266 516 258 500Z"
-            fill="rgba(239,242,215,0.38)"
+            d="M22.5 5.4C24.7 1.8 29.1 1.3 32 3.8C29.6 7.3 25.7 8 22.5 5.4Z"
+            fill="#E7EACD"
+            stroke="#747D2C"
+            strokeOpacity=".72"
+            strokeWidth=".9"
           />
 
           <path
-            d="M74 830 C52 813 31 822 28 844 C49 852 66 846 74 830Z"
-            fill="rgba(239,242,215,0.38)"
+            d="M14.5 12C12.3 8.7 8.4 8.4 6.2 10.8C8.2 14 11.6 14.5 14.5 12Z"
+            fill="#F0EAD9"
+            stroke="#8B744E"
+            strokeOpacity=".48"
+            strokeWidth=".8"
           />
 
           <path
-            d="M261 1138 C282 1120 304 1128 309 1150 C287 1159 269 1154 261 1138Z"
-            fill="rgba(239,242,215,0.38)"
+            d="M23 5C28 9.8 34.2 12.2 44 12.5"
+            stroke="#747D2C"
+            strokeOpacity=".36"
+            strokeWidth=".9"
+            strokeLinecap="round"
           />
-        </g>
-      </svg>
-    </div>
-  );
-}
+        </svg>
 
-function SectionEyebrow() {
-  return (
-    <div className="mb-5 flex items-center justify-center gap-3">
-      <span
-        aria-hidden="true"
-        className="h-px w-8 bg-[#9a9c55]/45 sm:w-10"
-      />
-
-      <Leaf
-        aria-hidden="true"
-        strokeWidth={1.6}
-        className="size-3.5 rotate-[18deg] text-[#7d8531]"
-      />
-
-      <span
-        aria-hidden="true"
-        className="h-px w-8 bg-[#9a9c55]/45 sm:w-10"
-      />
-    </div>
-  );
-}
-
-function ChapterImage({
-  image,
-  alt,
-  objectPosition,
-}: {
-  image: string;
-  alt: string;
-  objectPosition: string;
-}) {
-  return (
-    <div className="relative">
-      {/* restrained ambient depth */}
-      <div
-        aria-hidden="true"
-        className="absolute -inset-5 -z-10 rounded-[42px] bg-[radial-gradient(circle_at_50%_50%,rgba(127,137,56,0.075),transparent_68%)] blur-2xl"
-      />
-
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[26px] border border-white/80 bg-[#f2eee4] shadow-[0_22px_60px_rgba(63,47,28,0.09)] sm:rounded-[30px]">
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          sizes="(max-width: 1023px) 100vw, 52vw"
-          className="object-cover"
-          style={{
-            objectPosition,
-          }}
-        />
-
-        {/* Very light photographic warmth only */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,230,0.025),rgba(73,49,29,0.025))]"
-        />
+        <span className="h-px w-7 bg-gradient-to-l from-transparent to-[#7b8530]/45 sm:w-10" />
       </div>
-    </div>
-  );
-}
 
-function ChapterCopy({
-  number,
-  title,
-  description,
-}: {
-  number: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="max-w-[470px]">
-      <span className="mb-4 block text-[11px] font-semibold tracking-[0.28em] text-[#7b812c]">
-        {number}
-      </span>
-
-      <h3 className="text-balance text-[30px] font-semibold leading-[1.12] tracking-[-0.035em] text-[#21170f] sm:text-[36px] lg:text-[38px]">
-        {title}
-      </h3>
-
-      <div
-        aria-hidden="true"
-        className="my-5 h-px w-12 bg-gradient-to-r from-[#7d8531]/65 to-[#7d8531]/10"
-      />
-
-      <p className="max-w-[440px] text-[15px] leading-[1.9] text-[#685b4d] sm:text-[16px]">
-        {description}
+      <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#687321] sm:text-[11px]">
+        Why TR Narayan
       </p>
     </div>
   );
 }
 
-export function WhyChooseUs() {
+function SectionIntro() {
   return (
-    <section
-      id="why-tr-narayan"
-      aria-labelledby="why-tr-narayan-title"
-      className="relative isolate overflow-hidden bg-[#fffdf8]"
-    >
-      {/* Global atmospheric depth */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20"
+    <header className="mx-auto max-w-[780px] text-center">
+      <BrandEyebrow />
+
+      <h2
+        id="why-tr-narayan-heading"
+        className="mx-auto max-w-[730px] text-balance text-[38px] font-semibold leading-[1.055] tracking-[-0.046em] text-[#21170f] sm:text-[48px] lg:text-[56px]"
       >
-        <div className="absolute left-[-12%] top-[12%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(138,145,66,0.055),transparent_68%)]" />
+        Where growth{" "}
+        <span className="text-[#68751c]">
+          takes root.
+        </span>
+      </h2>
 
-        <div className="absolute right-[-13%] top-[43%] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(99,62,38,0.04),transparent_70%)]" />
+      <p className="mx-auto mt-5 max-w-[610px] text-[15px] leading-[1.8] text-[#6f6358] sm:mt-6 sm:text-base">
+        Every child begins with potential. We create the environment, guidance
+        and experiences that help that potential grow with purpose.
+      </p>
+    </header>
+  );
+}
 
-        <div className="absolute bottom-[4%] left-[25%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(149,157,87,0.045),transparent_70%)]" />
-      </div>
+/* -------------------------------------------------------------------------- */
+/*                              ORGANIC BRANCH                                */
+/* -------------------------------------------------------------------------- */
 
-      {/* Header */}
-      <div className="mx-auto max-w-[1440px] px-5 pb-16 pt-24 text-center sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-28 lg:pt-32">
-        <SectionEyebrow />
+function OrganicBranch() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-8 left-1/2 z-0 hidden w-[360px] -translate-x-1/2 lg:block xl:w-[410px]"
+    >
+      <svg
+        viewBox="0 0 410 1900"
+        preserveAspectRatio="none"
+        fill="none"
+        className="h-full w-full overflow-visible"
+      >
+        {/* Main living stem */}
+        <path
+          d="
+            M205 0
+            C212 118 164 188 172 310
+            C181 431 241 491 220 610
+            C201 722 145 786 159 910
+            C173 1032 239 1102 220 1226
+            C201 1348 151 1410 166 1531
+            C177 1626 211 1718 199 1900
+          "
+          stroke="#717A28"
+          strokeOpacity="0.27"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
 
-        <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.34em] text-[#777b2d] sm:text-[11px]">
-          Why TR Narayan
-        </p>
+        {/* Upper-left branch */}
+        <path
+          d="
+            M173 300
+            C142 282 116 254 98 220
+            C86 197 82 174 85 150
+          "
+          stroke="#78812D"
+          strokeOpacity="0.2"
+          strokeWidth="1.45"
+          strokeLinecap="round"
+        />
 
-        <h2
-          id="why-tr-narayan-title"
-          className="mx-auto max-w-[760px] text-balance text-[38px] font-semibold leading-[1.06] tracking-[-0.045em] text-[#21170f] sm:text-[48px] lg:text-[58px]"
+        {/* Upper-right branch */}
+        <path
+          d="
+            M220 610
+            C252 585 278 552 293 516
+            C301 497 304 478 302 459
+          "
+          stroke="#78812D"
+          strokeOpacity="0.2"
+          strokeWidth="1.45"
+          strokeLinecap="round"
+        />
+
+        {/* Middle-left branch */}
+        <path
+          d="
+            M159 910
+            C128 888 103 859 88 825
+            C78 803 76 781 79 760
+          "
+          stroke="#78812D"
+          strokeOpacity="0.19"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+
+        {/* Middle-right branch */}
+        <path
+          d="
+            M220 1226
+            C253 1201 278 1170 292 1134
+            C300 1115 303 1097 301 1077
+          "
+          stroke="#78812D"
+          strokeOpacity="0.19"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+
+        {/* Lower-left branch */}
+        <path
+          d="
+            M166 1531
+            C138 1514 114 1488 98 1458
+            C88 1439 84 1418 86 1398
+          "
+          stroke="#78812D"
+          strokeOpacity="0.17"
+          strokeWidth="1.35"
+          strokeLinecap="round"
+        />
+
+        {/* tiny secondary growth */}
+        <path
+          d="M113 242 C97 234 84 222 75 207"
+          stroke="#78812D"
+          strokeOpacity="0.13"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M277 550 C294 543 309 532 320 518"
+          stroke="#78812D"
+          strokeOpacity="0.13"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M106 861 C90 855 76 844 66 830"
+          stroke="#78812D"
+          strokeOpacity="0.12"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+
+        {/* Leaves */}
+        <g
+          stroke="#737D2A"
+          strokeWidth="1"
+          strokeOpacity="0.3"
         >
-          Where growth{" "}
-          <span className="text-[#687515]">takes root.</span>
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-[650px] text-[15px] leading-7 text-[#716457] sm:text-[16px]">
-          Every child begins with potential. We create the environment,
-          guidance and experiences that help that potential grow with purpose.
-        </p>
-      </div>
-
-      {/* Story */}
-      <div className="relative mx-auto max-w-[1480px] px-4 pb-24 sm:px-7 sm:pb-28 lg:px-10 lg:pb-36">
-        <BranchArtwork />
-
-        <div className="relative z-10 space-y-10 sm:space-y-14 lg:space-y-20">
-          {chapters.map((chapter, index) => {
-            const imageFirst = chapter.side === "left";
-
-            return (
-              <article
-                key={chapter.number}
-                className={[
-                  "relative overflow-hidden rounded-[34px]",
-                  "px-5 py-10 sm:px-8 sm:py-12",
-                  "lg:min-h-[570px] lg:px-12 lg:py-14",
-                  "xl:px-16 xl:py-16",
-                  toneClasses[chapter.tone],
-                ].join(" ")}
-              >
-                {/* subtle chapter atmosphere */}
-                <div
-                  aria-hidden="true"
-                  className={[
-                    "pointer-events-none absolute h-[360px] w-[360px] rounded-full blur-3xl",
-                    index % 2 === 0
-                      ? "-left-32 -top-28 bg-[#b6bc72]/[0.055]"
-                      : "-right-32 -top-24 bg-[#785037]/[0.045]",
-                  ].join(" ")}
-                />
-
-                {/* Organic corner, not sticker */}
-                <div
-                  aria-hidden="true"
-                  className={[
-                    "pointer-events-none absolute size-32 rounded-full border border-[#8d963f]/10",
-                    imageFirst
-                      ? "-bottom-20 -left-16"
-                      : "-right-16 -top-20",
-                  ].join(" ")}
-                />
-
-                <div className="relative grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 xl:gap-24">
-                  {imageFirst ? (
-                    <>
-                      <ChapterImage
-                        image={chapter.image}
-                        alt={chapter.alt}
-                        objectPosition={chapter.objectPosition}
-                      />
-
-                      <div className="flex lg:justify-center">
-                        <ChapterCopy
-                          number={chapter.number}
-                          title={chapter.title}
-                          description={chapter.description}
-                        />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="order-2 flex lg:order-1 lg:justify-center">
-                        <ChapterCopy
-                          number={chapter.number}
-                          title={chapter.title}
-                          description={chapter.description}
-                        />
-                      </div>
-
-                      <div className="order-1 lg:order-2">
-                        <ChapterImage
-                          image={chapter.image}
-                          alt={chapter.alt}
-                          objectPosition={chapter.objectPosition}
-                        />
-                      </div>
-                    </>
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        {/* Closing growth mark */}
-        <div
-          aria-hidden="true"
-          className="mt-16 flex items-center justify-center gap-3 sm:mt-20"
-        >
-          <span className="h-px w-10 bg-[#8d963f]/25" />
-
-          <Leaf
-            strokeWidth={1.4}
-            className="size-3.5 rotate-[24deg] text-[#7d8531]/70"
+          <path
+            d="M85 151C61 134 57 106 77 88C98 106 101 132 85 151Z"
+            fill="#EDF0D5"
+            fillOpacity="0.62"
           />
 
-          <span className="h-px w-10 bg-[#8d963f]/25" />
+          <path
+            d="M301 459C324 440 351 448 358 473C335 486 313 481 301 459Z"
+            fill="#E9EDD0"
+            fillOpacity="0.58"
+          />
+
+          <path
+            d="M79 760C56 742 30 750 24 775C47 787 68 781 79 760Z"
+            fill="#F1EAD8"
+            fillOpacity="0.52"
+            stroke="#8B744E"
+            strokeOpacity="0.24"
+          />
+
+          <path
+            d="M301 1077C325 1059 350 1068 356 1093C333 1105 312 1099 301 1077Z"
+            fill="#E9EDD0"
+            fillOpacity="0.58"
+          />
+
+          <path
+            d="M86 1398C63 1382 39 1390 34 1414C56 1425 76 1419 86 1398Z"
+            fill="#EDF0D5"
+            fillOpacity="0.5"
+          />
+        </g>
+
+        {/* Tiny nodes */}
+        <circle
+          cx="172"
+          cy="310"
+          r="3"
+          fill="#747D2C"
+          fillOpacity="0.18"
+        />
+        <circle
+          cx="220"
+          cy="610"
+          r="3"
+          fill="#747D2C"
+          fillOpacity="0.18"
+        />
+        <circle
+          cx="159"
+          cy="910"
+          r="3"
+          fill="#747D2C"
+          fillOpacity="0.18"
+        />
+        <circle
+          cx="220"
+          cy="1226"
+          r="3"
+          fill="#747D2C"
+          fillOpacity="0.18"
+        />
+      </svg>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  IMAGE                                     */
+/* -------------------------------------------------------------------------- */
+
+function ChapterImage({
+  chapter,
+  index,
+}: {
+  chapter: Chapter;
+  index: number;
+}) {
+  return (
+    <div className="relative">
+      {/* restrained ambient glow */}
+      <div
+        aria-hidden="true"
+        className={[
+          "pointer-events-none absolute h-[72%] w-[72%] rounded-full blur-[80px]",
+          index % 2 === 0
+            ? "-bottom-[14%] -left-[8%] bg-[#89933a]/[0.075]"
+            : "-right-[7%] -top-[14%] bg-[#876a48]/[0.055]",
+        ].join(" ")}
+      />
+
+      {/* Partial organic contour */}
+      <div
+        aria-hidden="true"
+        className={[
+          "pointer-events-none absolute hidden size-32 rounded-full border border-[#7d8731]/[0.13] sm:block lg:size-40",
+          index % 2 === 0
+            ? "-bottom-5 -left-5"
+            : "-right-5 -top-5",
+        ].join(" ")}
+      />
+
+      <figure className="relative overflow-hidden rounded-[24px] border border-white/90 bg-[#eee9df] shadow-[0_24px_65px_rgba(61,44,29,0.095)] sm:rounded-[28px]">
+        <div className="relative aspect-[4/3] w-full">
+          <Image
+            src={chapter.image}
+            alt={chapter.alt}
+            fill
+            sizes="(max-width: 639px) 94vw, (max-width: 1023px) 90vw, (max-width: 1439px) 47vw, 650px"
+            className={`object-cover ${chapter.imageClassName}`}
+          />
+
+          {/* Natural photographic warmth only */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,249,230,0.018),rgba(74,50,30,0.025))]"
+          />
+        </div>
+      </figure>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   COPY                                     */
+/* -------------------------------------------------------------------------- */
+
+function ChapterMarker({ number }: { number: string }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <span className="font-serif text-[13px] font-medium tracking-[0.14em] text-[#687322]">
+        {number}
+      </span>
+
+      <span
+        aria-hidden="true"
+        className="h-px w-9 bg-gradient-to-r from-[#77812d]/40 to-transparent"
+      />
+
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 15 10"
+        className="h-2.5 w-[15px]"
+        fill="none"
+      >
+        <path
+          d="M1 8C5 7.5 8 5.2 10 1.5"
+          stroke="#77812D"
+          strokeOpacity=".42"
+          strokeWidth=".8"
+          strokeLinecap="round"
+        />
+        <path
+          d="M9.8 1.8C11.1.2 13.3.3 14.2 1.8C12.8 3.5 11 3.5 9.8 1.8Z"
+          fill="#E5E9C8"
+          stroke="#77812D"
+          strokeOpacity=".48"
+          strokeWidth=".6"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function ChapterCopy({ chapter }: { chapter: Chapter }) {
+  return (
+    <div className="relative max-w-[460px]">
+      <ChapterMarker number={chapter.number} />
+
+      <h3 className="text-balance text-[29px] font-semibold leading-[1.1] tracking-[-0.038em] text-[#211710] sm:text-[34px] lg:text-[37px]">
+        {chapter.title}
+      </h3>
+
+      <p className="mt-4 max-w-[430px] text-[15px] leading-[1.82] text-[#6c6157] sm:mt-5 sm:text-base">
+        {chapter.description}
+      </p>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              STORY CHAPTER                                 */
+/* -------------------------------------------------------------------------- */
+
+function StoryChapter({
+  chapter,
+  index,
+}: {
+  chapter: Chapter;
+  index: number;
+}) {
+  const imageFirst = chapter.side === "left";
+
+  return (
+    <article
+      className={[
+        "relative isolate overflow-hidden",
+        "rounded-[26px] sm:rounded-[30px] lg:rounded-[36px]",
+        "px-5 py-7 sm:px-8 sm:py-9",
+        "lg:px-10 lg:py-10 xl:px-12 xl:py-11",
+        toneClasses[chapter.tone],
+      ].join(" ")}
+    >
+      {/* asymmetric atmospheric field */}
+      <div
+        aria-hidden="true"
+        className={[
+          "pointer-events-none absolute -z-10 h-[390px] w-[390px] rounded-full blur-[95px]",
+          index % 2 === 0
+            ? "-left-40 -top-32 bg-[#9ca554]/[0.055]"
+            : "-right-40 -bottom-32 bg-[#805d42]/[0.04]",
+        ].join(" ")}
+      />
+
+      {/* very quiet organic edge */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 180 180"
+        fill="none"
+        className={[
+          "pointer-events-none absolute hidden h-[180px] w-[180px] text-[#7a8430] opacity-[0.08] md:block",
+          index % 2 === 0
+            ? "-bottom-16 -right-12"
+            : "-left-12 -top-16 rotate-180",
+        ].join(" ")}
+      >
+        <path
+          d="M8 171C40 135 48 93 79 66C105 43 139 38 172 8"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M79 66C67 46 69 29 84 15"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M121 42C140 48 156 44 168 31"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        {imageFirst ? (
+          <>
+            <ChapterImage chapter={chapter} index={index} />
+
+            <div className="flex lg:justify-center">
+              <ChapterCopy chapter={chapter} />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="order-2 flex lg:order-1 lg:justify-center">
+              <ChapterCopy chapter={chapter} />
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <ChapterImage chapter={chapter} index={index} />
+            </div>
+          </>
+        )}
+      </div>
+    </article>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  SECTION                                   */
+/* -------------------------------------------------------------------------- */
+
+export function WhyChooseUsSection() {
+  return (
+    <section
+      aria-labelledby="why-tr-narayan-heading"
+      className="relative isolate overflow-hidden bg-[#fffdf8]"
+    >
+      {/* Statistics → Why Choose Us transition */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(248,246,236,0.58),rgba(255,253,248,0))] sm:h-28"
+      />
+
+      {/* global atmospheric layers */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -left-[17%] top-[8%] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle,rgba(130,140,56,0.06),transparent_68%)]" />
+
+        <div className="absolute -right-[18%] top-[37%] h-[650px] w-[650px] rounded-full bg-[radial-gradient(circle,rgba(116,80,53,0.04),transparent_70%)]" />
+
+        <div className="absolute left-[10%] top-[65%] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(141,151,72,0.045),transparent_70%)]" />
+
+        <div className="absolute -right-[10%] bottom-[2%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(126,136,58,0.04),transparent_70%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-[1480px] px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-18 lg:px-8 lg:pb-24 lg:pt-20">
+        <SectionIntro />
+
+        <div className="relative mt-12 sm:mt-14 lg:mt-18">
+          <OrganicBranch />
+
+          <div className="relative z-10 space-y-6 sm:space-y-8 lg:space-y-10">
+            {chapters.map((chapter, index) => (
+              <StoryChapter
+                key={chapter.number}
+                chapter={chapter}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Story completion mark */}
+        <div
+          aria-hidden="true"
+          className="mt-12 flex items-center justify-center gap-3 sm:mt-14 lg:mt-16"
+        >
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#7b8530]/35 sm:w-16" />
+
+          <svg
+            viewBox="0 0 30 18"
+            fill="none"
+            className="h-[18px] w-[30px]"
+          >
+            <path
+              d="M2 15C9 14 13.5 10 16 4"
+              stroke="#747D2C"
+              strokeOpacity=".5"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+
+            <path
+              d="M15.5 4.4C18.1.8 22.8.8 25.2 4C22.3 7.4 18.4 7.3 15.5 4.4Z"
+              fill="#E7EACD"
+              stroke="#747D2C"
+              strokeOpacity=".58"
+              strokeWidth=".8"
+            />
+          </svg>
+
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#7b8530]/35 sm:w-16" />
         </div>
       </div>
 
-      {/* Seamless transition into next chapter */}
+      {/* Why Choose Us → next section */}
       <div
         aria-hidden="true"
-        className="h-16 bg-[linear-gradient(180deg,rgba(255,253,248,0),rgba(247,247,237,0.55))] sm:h-20"
+        className="h-14 bg-[linear-gradient(180deg,rgba(255,253,248,0),rgba(244,246,231,0.52))] sm:h-16"
       />
     </section>
   );
