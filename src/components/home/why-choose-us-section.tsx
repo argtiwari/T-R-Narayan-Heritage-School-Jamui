@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { Leaf } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
 
 const chapters = [
   {
@@ -60,6 +62,97 @@ const toneClasses: Record<Chapter["tone"], string> = {
   warm:
     "bg-[linear-gradient(135deg,rgba(253,250,242,0.66)_0%,rgba(249,246,237,0.5)_48%,rgba(247,244,232,0.54)_100%)]",
 };
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+/* -------------------------------------------------------------------------- */
+/*                                  MOTION                                    */
+/* -------------------------------------------------------------------------- */
+
+const introVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 16,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: EASE,
+    },
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+    scale: 0.992,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: EASE,
+    },
+  },
+};
+
+const copyVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 14,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: 0.08,
+      ease: EASE,
+    },
+  },
+};
+
+const branchViewport = {
+  once: true,
+  amount: 0.08,
+};
+
+const branchInitial = {
+  pathLength: 0,
+  opacity: 0,
+};
+
+const branchVisible = {
+  pathLength: 1,
+  opacity: 1,
+};
+
+function getLeafMotion(delay: number) {
+  return {
+    initial: {
+      opacity: 0,
+      scale: 0.96,
+    },
+    whileInView: {
+      opacity: 1,
+      scale: 1,
+    },
+    viewport: {
+      once: true,
+      amount: 0.15,
+    },
+    transition: {
+      duration: 0.45,
+      delay,
+      ease: EASE,
+    },
+  };
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                  INTRO                                     */
@@ -124,7 +217,16 @@ function BrandEyebrow() {
 
 function SectionIntro() {
   return (
-    <header className="mx-auto max-w-[780px] text-center">
+    <motion.header
+      variants={introVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.55,
+      }}
+      className="mx-auto max-w-[780px] text-center"
+    >
       <BrandEyebrow />
 
       <h2
@@ -141,7 +243,7 @@ function SectionIntro() {
         Every child begins with potential. We create the environment, guidance
         and experiences that help that potential grow with purpose.
       </p>
-    </header>
+    </motion.header>
   );
 }
 
@@ -162,7 +264,7 @@ function OrganicBranch() {
         className="h-full w-full overflow-visible"
       >
         {/* Main living stem */}
-        <path
+        <motion.path
           d="
             M205 0
             C212 118 164 188 172 310
@@ -176,10 +278,22 @@ function OrganicBranch() {
           strokeOpacity="0.27"
           strokeWidth="2"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 2.25,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.45,
+            },
+          }}
         />
 
         {/* Upper-left branch */}
-        <path
+        <motion.path
           d="
             M173 300
             C142 282 116 254 98 220
@@ -189,10 +303,24 @@ function OrganicBranch() {
           strokeOpacity="0.2"
           strokeWidth="1.45"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.75,
+              delay: 0.4,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 0.4,
+            },
+          }}
         />
 
         {/* Upper-right branch */}
-        <path
+        <motion.path
           d="
             M220 610
             C252 585 278 552 293 516
@@ -202,10 +330,24 @@ function OrganicBranch() {
           strokeOpacity="0.2"
           strokeWidth="1.45"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.75,
+              delay: 0.72,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 0.72,
+            },
+          }}
         />
 
         {/* Middle-left branch */}
-        <path
+        <motion.path
           d="
             M159 910
             C128 888 103 859 88 825
@@ -215,10 +357,24 @@ function OrganicBranch() {
           strokeOpacity="0.19"
           strokeWidth="1.4"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.75,
+              delay: 1.02,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 1.02,
+            },
+          }}
         />
 
         {/* Middle-right branch */}
-        <path
+        <motion.path
           d="
             M220 1226
             C253 1201 278 1170 292 1134
@@ -228,10 +384,24 @@ function OrganicBranch() {
           strokeOpacity="0.19"
           strokeWidth="1.4"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.75,
+              delay: 1.3,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 1.3,
+            },
+          }}
         />
 
         {/* Lower-left branch */}
-        <path
+        <motion.path
           d="
             M166 1531
             C138 1514 114 1488 98 1458
@@ -241,71 +411,154 @@ function OrganicBranch() {
           strokeOpacity="0.17"
           strokeWidth="1.35"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.75,
+              delay: 1.56,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 1.56,
+            },
+          }}
         />
 
-        {/* tiny secondary growth */}
-        <path
+        {/* Tiny secondary growth */}
+        <motion.path
           d="M113 242 C97 234 84 222 75 207"
           stroke="#78812D"
           strokeOpacity="0.13"
           strokeWidth="1"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.45,
+              delay: 0.72,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.25,
+              delay: 0.72,
+            },
+          }}
         />
 
-        <path
+        <motion.path
           d="M277 550 C294 543 309 532 320 518"
           stroke="#78812D"
           strokeOpacity="0.13"
           strokeWidth="1"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.45,
+              delay: 1,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.25,
+              delay: 1,
+            },
+          }}
         />
 
-        <path
+        <motion.path
           d="M106 861 C90 855 76 844 66 830"
           stroke="#78812D"
           strokeOpacity="0.12"
           strokeWidth="1"
           strokeLinecap="round"
+          initial={branchInitial}
+          whileInView={branchVisible}
+          viewport={branchViewport}
+          transition={{
+            pathLength: {
+              duration: 0.45,
+              delay: 1.3,
+              ease: EASE,
+            },
+            opacity: {
+              duration: 0.25,
+              delay: 1.3,
+            },
+          }}
         />
 
         {/* Leaves */}
-        <g
+        <motion.path
+          d="M85 151C61 134 57 106 77 88C98 106 101 132 85 151Z"
+          fill="#EDF0D5"
+          fillOpacity="0.62"
           stroke="#737D2A"
           strokeWidth="1"
           strokeOpacity="0.3"
-        >
-          <path
-            d="M85 151C61 134 57 106 77 88C98 106 101 132 85 151Z"
-            fill="#EDF0D5"
-            fillOpacity="0.62"
-          />
+          style={{
+            transformOrigin: "85px 151px",
+          }}
+          {...getLeafMotion(0.85)}
+        />
 
-          <path
-            d="M301 459C324 440 351 448 358 473C335 486 313 481 301 459Z"
-            fill="#E9EDD0"
-            fillOpacity="0.58"
-          />
+        <motion.path
+          d="M301 459C324 440 351 448 358 473C335 486 313 481 301 459Z"
+          fill="#E9EDD0"
+          fillOpacity="0.58"
+          stroke="#737D2A"
+          strokeWidth="1"
+          strokeOpacity="0.3"
+          style={{
+            transformOrigin: "301px 459px",
+          }}
+          {...getLeafMotion(1.08)}
+        />
 
-          <path
-            d="M79 760C56 742 30 750 24 775C47 787 68 781 79 760Z"
-            fill="#F1EAD8"
-            fillOpacity="0.52"
-            stroke="#8B744E"
-            strokeOpacity="0.24"
-          />
+        <motion.path
+          d="M79 760C56 742 30 750 24 775C47 787 68 781 79 760Z"
+          fill="#F1EAD8"
+          fillOpacity="0.52"
+          stroke="#8B744E"
+          strokeWidth="1"
+          strokeOpacity="0.24"
+          style={{
+            transformOrigin: "79px 760px",
+          }}
+          {...getLeafMotion(1.35)}
+        />
 
-          <path
-            d="M301 1077C325 1059 350 1068 356 1093C333 1105 312 1099 301 1077Z"
-            fill="#E9EDD0"
-            fillOpacity="0.58"
-          />
+        <motion.path
+          d="M301 1077C325 1059 350 1068 356 1093C333 1105 312 1099 301 1077Z"
+          fill="#E9EDD0"
+          fillOpacity="0.58"
+          stroke="#737D2A"
+          strokeWidth="1"
+          strokeOpacity="0.3"
+          style={{
+            transformOrigin: "301px 1077px",
+          }}
+          {...getLeafMotion(1.58)}
+        />
 
-          <path
-            d="M86 1398C63 1382 39 1390 34 1414C56 1425 76 1419 86 1398Z"
-            fill="#EDF0D5"
-            fillOpacity="0.5"
-          />
-        </g>
+        <motion.path
+          d="M86 1398C63 1382 39 1390 34 1414C56 1425 76 1419 86 1398Z"
+          fill="#EDF0D5"
+          fillOpacity="0.5"
+          stroke="#737D2A"
+          strokeWidth="1"
+          strokeOpacity="0.3"
+          style={{
+            transformOrigin: "86px 1398px",
+          }}
+          {...getLeafMotion(1.82)}
+        />
 
         {/* Tiny nodes */}
         <circle
@@ -315,6 +568,7 @@ function OrganicBranch() {
           fill="#747D2C"
           fillOpacity="0.18"
         />
+
         <circle
           cx="220"
           cy="610"
@@ -322,6 +576,7 @@ function OrganicBranch() {
           fill="#747D2C"
           fillOpacity="0.18"
         />
+
         <circle
           cx="159"
           cy="910"
@@ -329,6 +584,7 @@ function OrganicBranch() {
           fill="#747D2C"
           fillOpacity="0.18"
         />
+
         <circle
           cx="220"
           cy="1226"
@@ -354,7 +610,7 @@ function ChapterImage({
 }) {
   return (
     <div className="relative">
-      {/* restrained ambient glow */}
+      {/* Restrained ambient glow */}
       <div
         aria-hidden="true"
         className={[
@@ -386,7 +642,6 @@ function ChapterImage({
             className={`object-cover ${chapter.imageClassName}`}
           />
 
-          {/* Natural photographic warmth only */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,249,230,0.018),rgba(74,50,30,0.025))]"
@@ -426,6 +681,7 @@ function ChapterMarker({ number }: { number: string }) {
           strokeWidth=".8"
           strokeLinecap="round"
         />
+
         <path
           d="M9.8 1.8C11.1.2 13.3.3 14.2 1.8C12.8 3.5 11 3.5 9.8 1.8Z"
           fill="#E5E9C8"
@@ -438,7 +694,11 @@ function ChapterMarker({ number }: { number: string }) {
   );
 }
 
-function ChapterCopy({ chapter }: { chapter: Chapter }) {
+function ChapterCopy({
+  chapter,
+}: {
+  chapter: Chapter;
+}) {
   return (
     <div className="relative max-w-[460px]">
       <ChapterMarker number={chapter.number} />
@@ -468,7 +728,13 @@ function StoryChapter({
   const imageFirst = chapter.side === "left";
 
   return (
-    <article
+    <motion.article
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
       className={[
         "relative isolate overflow-hidden",
         "rounded-[26px] sm:rounded-[30px] lg:rounded-[36px]",
@@ -477,7 +743,7 @@ function StoryChapter({
         toneClasses[chapter.tone],
       ].join(" ")}
     >
-      {/* asymmetric atmospheric field */}
+      {/* Asymmetric atmospheric field */}
       <div
         aria-hidden="true"
         className={[
@@ -488,7 +754,7 @@ function StoryChapter({
         ].join(" ")}
       />
 
-      {/* very quiet organic edge */}
+      {/* Very quiet organic edge */}
       <svg
         aria-hidden="true"
         viewBox="0 0 180 180"
@@ -525,25 +791,42 @@ function StoryChapter({
       <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         {imageFirst ? (
           <>
-            <ChapterImage chapter={chapter} index={index} />
+            <motion.div variants={imageVariants}>
+              <ChapterImage
+                chapter={chapter}
+                index={index}
+              />
+            </motion.div>
 
-            <div className="flex lg:justify-center">
+            <motion.div
+              variants={copyVariants}
+              className="flex lg:justify-center"
+            >
               <ChapterCopy chapter={chapter} />
-            </div>
+            </motion.div>
           </>
         ) : (
           <>
-            <div className="order-2 flex lg:order-1 lg:justify-center">
+            <motion.div
+              variants={copyVariants}
+              className="order-2 flex lg:order-1 lg:justify-center"
+            >
               <ChapterCopy chapter={chapter} />
-            </div>
+            </motion.div>
 
-            <div className="order-1 lg:order-2">
-              <ChapterImage chapter={chapter} index={index} />
-            </div>
+            <motion.div
+              variants={imageVariants}
+              className="order-1 lg:order-2"
+            >
+              <ChapterImage
+                chapter={chapter}
+                index={index}
+              />
+            </motion.div>
           </>
         )}
       </div>
-    </article>
+    </motion.article>
   );
 }
 
@@ -563,7 +846,7 @@ export function WhyChooseUsSection() {
         className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(248,246,236,0.58),rgba(255,253,248,0))] sm:h-28"
       />
 
-      {/* global atmospheric layers */}
+      {/* Global atmospheric layers */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
@@ -595,8 +878,24 @@ export function WhyChooseUsSection() {
         </div>
 
         {/* Story completion mark */}
-        <div
+        <motion.div
           aria-hidden="true"
+          initial={{
+            opacity: 0,
+            y: 8,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.8,
+          }}
+          transition={{
+            duration: 0.55,
+            ease: EASE,
+          }}
           className="mt-12 flex items-center justify-center gap-3 sm:mt-14 lg:mt-16"
         >
           <span className="h-px w-10 bg-gradient-to-r from-transparent to-[#7b8530]/35 sm:w-16" />
@@ -624,7 +923,7 @@ export function WhyChooseUsSection() {
           </svg>
 
           <span className="h-px w-10 bg-gradient-to-l from-transparent to-[#7b8530]/35 sm:w-16" />
-        </div>
+        </motion.div>
       </div>
 
       {/* Why Choose Us → next section */}
