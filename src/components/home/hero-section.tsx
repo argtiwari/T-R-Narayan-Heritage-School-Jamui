@@ -3,336 +3,618 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowDown,
   ArrowRight,
   BookOpen,
+  CalendarDays,
+  GraduationCap,
   Leaf,
-  School,
+  MapPin,
+  MonitorUp,
   Sprout,
+  Users,
 } from "lucide-react";
-import {
-  motion,
-  type Variants,
-} from "framer-motion";
+import { motion } from "framer-motion";
 
-const trustBadges = [
-  {
-    label: "CBSE Affiliated",
-    icon: BookOpen,
-  },
-  {
-    label: "Smart Classrooms",
-    icon: School,
-  },
-  {
-    label: "Holistic Education",
-    icon: Sprout,
-  },
-];
-
-/* -------------------------------------------------------------------------- */
-/*                                MOTION                                      */
-/* -------------------------------------------------------------------------- */
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const contentContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.08,
-      staggerChildren: 0.07,
-    },
+const identityCards = [
+  {
+    title: "CBSE Affiliated",
+    description: "Affiliation No. 330881",
+    icon: BookOpen,
+  },
+  {
+    title: "Smart Classrooms",
+    description: "Technology-enabled learning spaces",
+    icon: MonitorUp,
+  },
+  {
+    title: "Holistic Education",
+    description: "Academic excellence with life skills",
+    icon: Sprout,
+  },
+  {
+    title: "Experienced Faculty",
+    description: "Guiding with care, inspiring growth",
+    icon: Users,
+  },
+];
+
+const reveal = {
+  initial: {
+    opacity: 0,
+    y: 14,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
   },
 };
 
-const contentItem: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 16,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.48,
-      ease: EASE,
-    },
-  },
-};
+function BotanicalBackground() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {/* Paper grain */}
+      <div
+        className="absolute inset-0 opacity-[0.13]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E\")",
+        }}
+      />
 
-const imageReveal: Variants = {
-  hidden: {
-    opacity: 0,
-    x: 24,
-    y: 8,
-    scale: 0.985,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.65,
-      delay: 0.12,
-      ease: EASE,
-    },
-  },
-};
+      {/* Warm atmospheric depth */}
+      <div className="absolute -left-40 top-[12%] size-[500px] rounded-full bg-[#8B963A]/[0.025] blur-[105px]" />
+
+      <div className="absolute right-[2%] top-[4%] size-[640px] rounded-full bg-[#75462F]/[0.018] blur-[125px]" />
+
+      <div className="absolute bottom-[-25%] left-[35%] h-[420px] w-[720px] rounded-full bg-[#9BA34A]/[0.018] blur-[120px]" />
+
+      {/* Main heritage botanical drawing */}
+      <svg
+        viewBox="0 0 820 760"
+        fill="none"
+        className="absolute left-[20%] top-[-72px] hidden h-[760px] w-[760px] text-[#747D2C] opacity-[0.105] lg:block"
+      >
+        {/* main organic stem */}
+        <path
+          d="M421 -40C402 52 369 109 319 154C270 198 229 232 211 291C187 367 212 427 263 486C315 546 369 595 383 682C390 720 389 753 387 796"
+          stroke="currentColor"
+          strokeWidth="1.05"
+          strokeLinecap="round"
+        />
+
+        {/* upper left branch */}
+        <path
+          d="M337 136C286 113 246 77 220 34"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M293 177C239 162 194 129 160 84"
+          stroke="currentColor"
+          strokeWidth="0.85"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M253 219C199 214 148 190 107 153"
+          stroke="currentColor"
+          strokeWidth="0.85"
+          strokeLinecap="round"
+        />
+
+        {/* upper right */}
+        <path
+          d="M341 135C389 106 428 70 451 27"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M319 155C372 151 420 129 459 94"
+          stroke="currentColor"
+          strokeWidth="0.85"
+          strokeLinecap="round"
+        />
+
+        {/* middle extension */}
+        <path
+          d="M211 291C153 273 107 239 72 194"
+          stroke="currentColor"
+          strokeWidth="0.85"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M225 411C170 400 120 373 83 332"
+          stroke="currentColor"
+          strokeWidth="0.8"
+          strokeLinecap="round"
+        />
+
+        {/* leaves */}
+        <path
+          d="M221 34C199 10 172 15 165 37C183 52 204 50 221 34Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M263 106C239 84 212 90 206 112C225 127 247 124 263 106Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M190 126C165 105 138 112 133 134C152 148 174 144 190 126Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M146 181C121 162 95 170 91 191C111 203 132 199 146 181Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M450 27C466 0 493 -1 504 19C491 40 470 44 450 27Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M411 118C430 92 457 95 467 116C452 135 430 137 411 118Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M110 154C83 137 58 146 56 168C77 179 97 173 110 154Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M101 347C75 328 49 336 46 358C66 370 88 365 101 347Z"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        {/* editorial organic geometry */}
+        <circle
+          cx="243"
+          cy="363"
+          r="122"
+          stroke="currentColor"
+          strokeWidth="0.55"
+          opacity="0.55"
+        />
+
+        <circle
+          cx="243"
+          cy="363"
+          r="82"
+          stroke="currentColor"
+          strokeWidth="0.45"
+          opacity="0.48"
+        />
+
+        <circle
+          cx="243"
+          cy="363"
+          r="39"
+          stroke="currentColor"
+          strokeWidth="0.4"
+          opacity="0.35"
+        />
+      </svg>
+
+      {/* Fine left-edge botanical annotation */}
+      <svg
+        viewBox="0 0 220 360"
+        fill="none"
+        className="absolute -left-12 bottom-[-35px] hidden h-[340px] w-[220px] text-[#747D2C] opacity-[0.065] xl:block"
+      >
+        <path
+          d="M8 342C58 296 80 244 88 184C96 126 122 76 183 17"
+          stroke="currentColor"
+          strokeWidth="0.9"
+          strokeLinecap="round"
+        />
+
+        <path
+          d="M76 238C49 221 29 220 8 230"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+
+        <path
+          d="M100 136C129 117 153 112 180 118"
+          stroke="currentColor"
+          strokeWidth="0.75"
+        />
+      </svg>
+
+      {/* Mobile trace */}
+      <svg
+        viewBox="0 0 170 320"
+        fill="none"
+        className="absolute -right-6 top-20 h-[300px] w-[160px] text-[#747D2C] opacity-[0.055] lg:hidden"
+      >
+        <path
+          d="M151 -15C126 58 98 101 84 165C74 215 87 260 107 332"
+          stroke="currentColor"
+          strokeWidth="0.8"
+        />
+
+        <path
+          d="M97 105C67 85 42 84 17 94"
+          stroke="currentColor"
+          strokeWidth="0.7"
+        />
+
+        <path
+          d="M85 164C116 145 139 142 161 148"
+          stroke="currentColor"
+          strokeWidth="0.7"
+        />
+
+        <circle
+          cx="65"
+          cy="194"
+          r="55"
+          stroke="currentColor"
+          strokeWidth="0.45"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function CTALeaves() {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute -right-8 bottom-[-2px] hidden h-16 w-20 text-[#7A861F] sm:block"
+    >
+      <svg viewBox="0 0 80 64" fill="none" className="h-full w-full">
+        <path
+          d="M5 58C26 49 34 32 42 9"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          className="origin-bottom-left scale-[0.82] opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-55"
+        />
+
+        <path
+          d="M28 41C16 31 9 34 7 43C14 50 22 49 28 41Z"
+          fill="currentColor"
+          className="origin-bottom scale-[0.82] opacity-0 transition-all delay-75 duration-500 group-hover:scale-100 group-hover:opacity-55"
+        />
+
+        <path
+          d="M39 22C48 10 58 12 61 21C55 29 47 29 39 22Z"
+          fill="currentColor"
+          className="origin-bottom scale-[0.82] opacity-0 transition-all delay-100 duration-500 group-hover:scale-100 group-hover:opacity-55"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function SecondaryCTAAccent() {
+  return (
+    <span
+      aria-hidden="true"
+      className="flex items-center gap-2 transition-transform duration-300 group-hover:translate-x-0.5"
+    >
+      <span className="h-px w-5 bg-[#7A861F]/45 transition-all duration-300 group-hover:w-7" />
+      <Leaf
+        size={12}
+        strokeWidth={1.5}
+        className="-rotate-12 text-[#747D2C] transition-transform duration-300 group-hover:rotate-6"
+      />
+    </span>
+  );
+}
 
 export function HeroSection() {
-
-
   return (
-    <section className="relative overflow-hidden bg-[#FCFBF7]">
-      {/* Subtle organic background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(122,134,31,0.055)_0%,rgba(122,134,31,0)_70%)]"
-      />
+    <>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[8%] top-[8%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(75,36,20,0.04)_0%,rgba(75,36,20,0)_68%)]"
-      />
+      <section
+        aria-labelledby="home-hero-heading"
+        className="relative overflow-hidden bg-[#F8F5EF] pt-[88px]"
+      >
+        <BotanicalBackground />
 
-      <div className="mx-auto grid max-w-[1580px] items-center gap-14 px-5 py-16 sm:px-7 sm:py-20 lg:min-h-[670px] lg:grid-cols-[0.82fr_1.18fr] lg:gap-10 lg:px-10 lg:py-20 xl:gap-12 xl:px-12 2xl:gap-14">
-        {/* Left */}
-        <motion.div
-          variants={contentContainer}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 max-w-[610px]"
-        >
-          {/* Motto */}
-          <motion.div
-            variants={contentItem}
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#DDD8B9] bg-[#F6F1E5]/80 px-4 py-2 text-xs font-semibold tracking-[0.08em] text-[#4B2414]"
-          >
-            <Leaf
-              size={14}
-              strokeWidth={1.8}
-              className="text-[#7A861F]"
-              aria-hidden="true"
-            />
-
-            Growth Through Nurturing
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            variants={contentItem}
-            className="max-w-[600px] text-[43px] font-semibold leading-[1.04] tracking-[-0.045em] text-[#241C18] sm:text-[52px] lg:text-[56px] xl:text-[64px]"
-          >
-            Rooted in values.
-
-            <span className="mt-1 block text-[#66751C]">
-              Growing for tomorrow.
-            </span>
-          </motion.h1>
-
-          {/* Growth accent */}
-          <motion.div
-            variants={contentItem}
-            className="mt-6 flex items-center gap-2"
-            aria-hidden="true"
-          >
-            <span className="h-px w-10 bg-[#4B2414]/40" />
-
-            <Leaf
-              size={13}
-              strokeWidth={1.5}
-              className="rotate-12 text-[#7A861F]"
-            />
-
-            <span className="h-px w-5 bg-[#7A861F]/35" />
-          </motion.div>
-
-          {/* Description */}
-          <motion.p
-            variants={contentItem}
-            className="mt-7 max-w-[560px] text-[16px] leading-[1.8] text-[#6F6862] sm:text-[17px]"
-          >
-            At TR Narayan Heritage School, Jamui, learning is nurtured with
-            care, strong values and meaningful experiences—helping every child
-            grow with knowledge, confidence and character.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            variants={contentItem}
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
-          >
-            <Link
-              href="/admissions"
-              className="group inline-flex h-[52px] items-center justify-center gap-2.5 rounded-full bg-[#4B2414] px-7 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(75,36,20,0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3D1D10] hover:shadow-[0_12px_28px_rgba(75,36,20,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A861F] focus-visible:ring-offset-2"
+        <div className="relative z-10 mx-auto max-w-[1580px] px-5 pb-7 pt-8 sm:px-7 sm:pb-9 sm:pt-10 lg:px-10 lg:pb-10 lg:pt-12 xl:px-12 xl:pt-14">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-9 xl:gap-12 2xl:gap-14">
+            {/* LEFT */}
+            <motion.div
+              initial="initial"
+              animate="animate"
+              transition={{
+                staggerChildren: 0.065,
+              }}
+              className="relative max-w-[620px]"
             >
-              Explore Admissions
-
-              <ArrowRight
-                size={17}
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-
-            <Link
-              href="/about"
-              className="group inline-flex h-[52px] items-center justify-center gap-2 rounded-full border border-[#D9D4C8] bg-white/70 px-7 text-sm font-semibold text-[#241C18] shadow-[0_3px_12px_rgba(36,28,24,0.025)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#B8B294] hover:bg-[#F6F1E5] hover:shadow-[0_7px_18px_rgba(36,28,24,0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A861F] focus-visible:ring-offset-2"
-            >
-              Discover Our School
-            </Link>
-          </motion.div>
-
-          {/* Trust Badges */}
-          <motion.div
-            variants={contentItem}
-            className="mt-9 grid max-w-[570px] grid-cols-1 overflow-hidden rounded-[22px] border border-[#E7E2D6] bg-white/70 shadow-[0_10px_30px_rgba(75,36,20,0.04)] backdrop-blur-sm sm:grid-cols-3"
-          >
-            {trustBadges.map(({ label, icon: Icon }, index) => (
-              <div
-                key={label}
-                className={`flex min-h-[72px] items-center gap-3 px-4 py-3 ${index !== 0
-                  ? "border-t border-[#EEEAE1] sm:border-l sm:border-t-0"
-                  : ""
-                  }`}
+              <motion.div
+                variants={reveal}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="inline-flex min-h-9 items-center gap-2.5 rounded-full border border-[#DCD8B7]/80 bg-[#F1EEDB]/85 px-4 text-[11px] font-medium text-[#5B5926] shadow-[0_4px_14px_rgba(70,50,30,0.025)] sm:text-[12px]"
               >
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#EFF1D2] text-[#66751C]">
-                  <Icon
-                    size={18}
+                <Leaf
+                  size={14}
+                  strokeWidth={1.6}
+                  className="text-[#78822D]"
+                  aria-hidden="true"
+                />
+                Growth Through Nurturing
+              </motion.div>
+
+              <motion.h1
+                id="home-hero-heading"
+                variants={reveal}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="mt-6 max-w-[610px] text-[44px] font-semibold leading-[1.01] tracking-[-0.047em] text-[#251A15] sm:text-[56px] lg:text-[54px] xl:text-[60px] 2xl:text-[64px]"
+              >
+                Rooted in values.
+                <span className="mt-1 block text-[#66751C]">
+                  Growing for tomorrow.
+                </span>
+              </motion.h1>
+
+              <motion.p
+                variants={reveal}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="mt-5 max-w-[565px] text-[15px] leading-[1.75] text-[#6F665F] sm:text-[16px] xl:text-[16.5px]"
+              >
+                At TR Narayan Heritage School, Jamui, learning is nurtured with
+                care, strong values and meaningful experiences—helping every
+                child grow with knowledge, confidence and character.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div
+                variants={reveal}
+                transition={{ duration: 0.55, ease: EASE }}
+                className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
+              >
+                <Link
+                  href="/admissions"
+                  className="group relative inline-flex min-h-[50px] items-center justify-center gap-4 overflow-visible rounded-[15px] bg-[#4B2414] px-7 text-sm font-semibold text-white shadow-[0_9px_22px_rgba(75,36,20,0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3E1D10] hover:shadow-[0_13px_27px_rgba(75,36,20,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A861F] focus-visible:ring-offset-2"
+                >
+                  <span>Explore Admissions</span>
+
+                  <ArrowRight
+                    size={17}
                     strokeWidth={1.7}
                     aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
                   />
+
+                  <CTALeaves />
+                </Link>
+
+                <Link
+                  href="/about"
+                  className="group relative inline-flex min-h-[50px] items-center justify-center gap-4 border-b border-[#A8A177]/55 px-3 text-sm font-medium text-[#352A24] transition-all duration-300 hover:border-[#747D2C] hover:text-[#4B2414] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7A861F] focus-visible:ring-offset-3 sm:px-2"
+                >
+                  <span>Discover Our School</span>
+                  <SecondaryCTAAccent />
+                </Link>
+              </motion.div>
+
+              {/* IDENTITY CARDS */}
+              <motion.div
+                variants={reveal}
+                transition={{ duration: 0.6, ease: EASE }}
+                className="mt-8 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4"
+              >
+                {identityCards.map(({ title, description, icon: Icon }) => (
+                  <article
+                    key={title}
+                    className="group min-h-[145px] rounded-[15px] border border-[#DDD7CA] bg-[#FCFAF4]/88 px-4 py-4 shadow-[0_6px_18px_rgba(63,45,30,0.022)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[#BFC18A] hover:shadow-[0_10px_24px_rgba(63,45,30,0.055)] sm:min-h-[155px]"
+                  >
+                    <Icon
+                      size={23}
+                      strokeWidth={1.3}
+                      aria-hidden="true"
+                      className="text-[#737C29] transition-transform duration-300 group-hover:scale-[1.04]"
+                    />
+
+                    <h2 className="mt-4 text-[14px] font-semibold leading-[1.15] tracking-[-0.02em] text-[#2C211B] xl:text-[15px]">
+                      {title}
+                    </h2>
+
+                    <p className="mt-2.5 text-[10.5px] leading-[1.5] text-[#6F665E] xl:text-[11px]">
+                      {description}
+                    </p>
+                  </article>
+                ))}
+              </motion.div>
+
+              {/* Location */}
+              <motion.div
+                variants={reveal}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="mt-4"
+              >
+                <span className="inline-flex min-h-9 items-center gap-2.5 rounded-full border border-[#D9D3C5] bg-[#FCFAF4]/85 px-4 text-[11px] font-medium text-[#493D35]">
+                  <MapPin
+                    size={14}
+                    strokeWidth={1.6}
+                    className="text-[#747D2C]"
+                    aria-hidden="true"
+                  />
+                  Jamui, Bihar
+                </span>
+              </motion.div>
+            </motion.div>
+
+            {/* RIGHT */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 16,
+                scale: 0.99,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+                ease: EASE,
+              }}
+              className="relative lg:self-start"
+            >
+              {/* offset paper layer creates the subtle physical depth */}
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-[8px] left-[14px] right-[-8px] top-[14px] border border-[#C7BFAE]/40 bg-[#EEE8DA]/55 shadow-[0_28px_50px_rgba(62,43,30,0.12)]"
+              />
+
+              {/* outer editorial frame */}
+              <div className="group relative border border-[#AFA783]/70 bg-[#F5EFE2] p-[5px] shadow-[0_18px_36px_rgba(62,43,30,0.08),0_5px_12px_rgba(62,43,30,0.05)]">
+                {/* inner matte */}
+                <div className="border border-[#D6CEBD] bg-[#FCF8EF] p-[7px] sm:p-[8px]">
+                  <div className="relative aspect-[16/10.25] overflow-hidden border border-[#BDB596]/55 bg-[#EEE8DC]">
+                    <Image
+                      src="/images/home/school-campus-hero.png"
+                      alt="TR Narayan Heritage School campus in Jamui, Bihar"
+                      fill
+                      priority
+                      quality={95}
+                      sizes="(max-width: 767px) 100vw, (max-width: 1024px) 55vw, 900px"
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.012]"
+                    />
+
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-[#8B6D4E]/[0.014]"
+                    />
+                  </div>
+
+                  {/* Editorial caption */}
+                  <div className="flex flex-col gap-1.5 px-1 pb-1 pt-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-[8px] font-semibold uppercase tracking-[0.22em] text-[#737C29] sm:text-[9px]">
+                      Nurturing Minds. Building Futures.
+                    </p>
+
+                    <p className="text-[8px] font-semibold uppercase tracking-[0.19em] text-[#6B5C51] sm:text-[9px]">
+                      Jamui, Bihar
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust strip */}
+              <div className="mx-auto mt-5 flex max-w-[96%] flex-col items-center justify-center gap-3 rounded-[12px] border border-[#D8D1C3] bg-[#FCFAF4]/88 px-5 py-3.5 text-center shadow-[0_6px_18px_rgba(60,43,29,0.03)] sm:flex-row sm:gap-5 sm:py-3">
+                <span className="flex items-center gap-2 text-[11px] font-medium text-[#493D35] xl:text-xs">
+                  <GraduationCap
+                    size={16}
+                    strokeWidth={1.45}
+                    className="text-[#747D2C]"
+                    aria-hidden="true"
+                  />
+                  CBSE Affiliated
                 </span>
 
-                <span className="text-[13px] font-medium leading-5 text-[#625C56]">
-                  {label}
+                <span
+                  aria-hidden="true"
+                  className="hidden size-1 rounded-full bg-[#8D9250]/45 sm:block"
+                />
+
+                <span className="flex items-center gap-2 text-[11px] font-medium text-[#493D35] xl:text-xs">
+                  <MapPin
+                    size={16}
+                    strokeWidth={1.45}
+                    className="text-[#747D2C]"
+                    aria-hidden="true"
+                  />
+                  Jamui, Bihar
+                </span>
+
+                <span
+                  aria-hidden="true"
+                  className="hidden size-1 rounded-full bg-[#8D9250]/45 sm:block"
+                />
+
+                <span className="flex items-center gap-2 text-[11px] font-medium text-[#493D35] xl:text-xs">
+                  <CalendarDays
+                    size={16}
+                    strokeWidth={1.45}
+                    className="text-[#747D2C]"
+                    aria-hidden="true"
+                  />
+                  Admissions Open 2026–27
                 </span>
               </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Right Image */}
-        <motion.div
-          variants={imageReveal}
-          initial="hidden"
-          animate="visible"
-          className="relative lg:-mr-5 xl:-mr-7 2xl:-mr-8"
-        >
-          {/* Ambient growth glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-14 top-[15%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(122,134,31,0.09)_0%,rgba(122,134,31,0)_68%)] blur-2xl"
-          />
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-16 right-[8%] h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(75,36,20,0.055)_0%,rgba(75,36,20,0)_70%)] blur-2xl"
-          />
-
-          {/* Organic branch */}
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            viewBox="0 0 300 180"
-            fill="none"
-            className="pointer-events-none absolute -right-8 -top-16 hidden h-44 w-72 text-[#7A861F] opacity-[0.07] lg:block"
-          >
-            <motion.path
-              d="M20 160C75 135 95 94 137 65C174 39 218 32 282 20"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              initial={{
-                pathLength: 0,
-                opacity: 0,
-              }}
-              animate={{
-                pathLength: 1,
-                opacity: 1,
-              }}
-              transition={{
-                pathLength: {
-                  duration: 0.9,
-                  delay: 0.35,
-                  ease: EASE,
-                },
-                opacity: {
-                  duration: 0.3,
-                  delay: 0.35,
-                },
-              }}
-            />
-
-            <motion.path
-              d="M108 87C91 67 81 50 79 31"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              initial={{
-                pathLength: 0,
-                opacity: 0,
-              }}
-              animate={{
-                pathLength: 1,
-                opacity: 1,
-              }}
-              transition={{
-                pathLength: {
-                  duration: 0.45,
-                  delay: 0.8,
-                  ease: EASE,
-                },
-                opacity: {
-                  duration: 0.2,
-                  delay: 0.8,
-                },
-              }}
-            />
-
-            <motion.path
-              d="M164 50C173 72 190 84 211 91"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              initial={{
-                pathLength: 0,
-                opacity: 0,
-              }}
-              animate={{
-                pathLength: 1,
-                opacity: 1,
-              }}
-              transition={{
-                pathLength: {
-                  duration: 0.45,
-                  delay: 0.92,
-                  ease: EASE,
-                },
-                opacity: {
-                  duration: 0.2,
-                  delay: 0.92,
-                },
-              }}
-            />
-          </svg>
-
-          {/* Campus Image */}
-          <div className="group relative z-10 overflow-hidden rounded-[28px] border border-white/90 bg-[#F6F1E5] p-[2px] shadow-[0_30px_75px_rgba(75,36,20,0.13),0_8px_24px_rgba(36,28,24,0.06)]">
-            <div className="relative aspect-[1280/733] overflow-hidden rounded-[26px] bg-[#F6F1E5]">
-              <Image
-                src="/images/home/school-campus-hero.png"
-                alt="TR Narayan Heritage School campus building in Jamui"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, (max-width: 1440px) 58vw, 900px"
-                className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-[1.015]"
-              />
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
-    </section>
+
+          {/* Scroll indicator */}
+          <motion.a
+            href="#statistics"
+            aria-label="Scroll to discover more about TR Narayan Heritage School"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.65,
+              delay: 0.55,
+            }}
+            className="mx-auto mt-5 flex w-fit flex-col items-center text-[#51483F] sm:mt-6"
+          >
+            <span className="flex items-center gap-2 text-[10px] font-medium sm:text-[11px]">
+              Scroll to Discover
+
+              <Leaf
+                size={12}
+                strokeWidth={1.5}
+                className="rotate-12 text-[#747D2C]"
+                aria-hidden="true"
+              />
+            </span>
+
+            <motion.span
+              aria-hidden="true"
+              animate={{
+                scaleY: [0.7, 1, 0.7],
+                opacity: [0.3, 0.65, 0.3],
+              }}
+              transition={{
+                duration: 2.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="mt-2 h-5 w-px origin-top bg-[#776B60]/40"
+            />
+
+            <span className="mt-1 flex size-6 items-center justify-center rounded-full border border-[#7A861F]/20">
+              <ArrowDown
+                size={10}
+                strokeWidth={1.5}
+                className="text-[#747D2C]"
+                aria-hidden="true"
+              />
+            </span>
+          </motion.a>
+        </div>
+      </section>
+    </>
   );
 }

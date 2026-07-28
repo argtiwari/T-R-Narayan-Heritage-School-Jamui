@@ -149,45 +149,40 @@ function EditorialLabel({
 function FlourishingBranch() {
   const shouldReduceMotion = useReducedMotion();
 
-  const branchMotion = shouldReduceMotion
-    ? {}
-    : {
-        initial: {
-          pathLength: 0,
-          opacity: 0,
-        },
-        whileInView: {
-          pathLength: 1,
-          opacity: 1,
-        },
-        viewport: {
-          once: true,
-          amount: 0.05,
-        },
-      };
+  const branchMotion = {
+    initial: {
+      pathLength: 0,
+      opacity: 0,
+    },
+    whileInView: {
+      pathLength: 1,
+      opacity: 1,
+    },
+    viewport: {
+      once: true,
+      amount: 0.05,
+    },
+  };
 
-  const leafMotion = (delay: number) =>
-    shouldReduceMotion
-      ? {}
-      : {
-          initial: {
-            opacity: 0,
-            scale: 0.96,
-          },
-          whileInView: {
-            opacity: 1,
-            scale: 1,
-          },
-          viewport: {
-            once: true,
-            amount: 0.1,
-          },
-          transition: {
-            duration: 0.55,
-            delay,
-            ease: EASE,
-          },
-        };
+  const leafMotion = (delay: number) => ({
+    initial: {
+      opacity: 0,
+      scale: 0.96,
+    },
+    whileInView: {
+      opacity: 1,
+      scale: 1,
+    },
+    viewport: {
+      once: true,
+      amount: 0.1,
+    },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 0.55,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: EASE,
+    },
+  });
 
   return (
     <>
@@ -693,7 +688,7 @@ function AcademicAreas() {
 
 function StudentLifeTransition() {
   return (
-    <div className="relative mt-6 overflow-hidden pt-8 sm:mt-8 sm:pt-10 lg:mt-10 lg:pt-12">
+    <div className="relative mt-16 overflow-hidden pt-16 sm:mt-20 sm:pt-20 lg:mt-24 lg:pt-24">
       {/* Organic curved atmosphere */}
       <div
         aria-hidden="true"
@@ -825,7 +820,7 @@ export function LearningSection() {
 
       <FlourishingBranch />
 
-      <div className="relative z-10 mx-auto max-w-[1480px] px-4 pt-6 sm:px-6 sm:pt-8 lg:px-8 lg:pt-1">
+      <div className="relative z-10 mx-auto max-w-[1480px] px-4 pt-14 sm:px-6 sm:pt-18 lg:px-8 lg:pt-20">
         {/* Intro */}
         <motion.header
           variants={revealUp}

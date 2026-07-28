@@ -1,19 +1,47 @@
+"use client";
+
+import { useState } from "react";
+
+import BrandIntro from "@/components/home/brand-intro";
+
+import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/home/hero-section";
 import { StatisticsSection } from "@/components/home/statistics-section";
 import { WhyChooseUsSection } from "@/components/home/why-choose-us-section";
 import { LearningSection } from "@/components/home/learning-section";
-import { Navbar } from "@/components/layout/navbar";
+import { StudentLifeSection } from "@/components/home/student-life-section";
 
-export default function Home() {
+export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
+      {loading && (
+        <BrandIntro
+          onFinish={() => {
+            setLoading(false);
+          }}
+        />
+      )}
+
       <Navbar />
 
-      <main className="pt-[104px]">
+      <main
+        className={`transition-opacity duration-700 ${
+          loading
+            ? "pointer-events-none opacity-0"
+            : "pointer-events-auto opacity-100"
+        }`}
+      >
         <HeroSection />
+
         <StatisticsSection />
+
         <WhyChooseUsSection />
+
         <LearningSection />
+
+        <StudentLifeSection />
       </main>
     </>
   );

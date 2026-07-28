@@ -266,7 +266,10 @@ function GrowthLeaf({
 
 export function StatisticsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#fffdf8] py-14 sm:py-16 lg:py-20">
+    <section
+      id="statistics"
+      className="relative overflow-hidden bg-[#fffdf8] py-14 sm:py-16 lg:py-20"
+    >
       {/* Warm atmospheric depth */}
       <div
         aria-hidden="true"
