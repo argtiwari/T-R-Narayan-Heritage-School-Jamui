@@ -929,7 +929,7 @@ export function WhyChooseUsSection() {
       {/* Why Choose Us → next section */}
       <div
         aria-hidden="true"
-        className="h-14 bg-[linear-gradient(180deg,rgba(255,253,248,0),rgba(244,246,231,0.52))] sm:h-16"
+        className="h-14 bg-[linear-gradient(180deg,rgba(255,253,248,0),rgba(244,246,231,0.52))] sm:h-10"
       />
     </section>
   );

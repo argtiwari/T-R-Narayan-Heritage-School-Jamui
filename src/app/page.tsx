@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { StatisticsSection } from "@/components/home/statistics-section";
-import { WhyChooseUsSection  } from "@/components/home/why-choose-us-section";
+import { WhyChooseUsSection } from "@/components/home/why-choose-us-section";
+import { LearningSection } from "@/components/home/learning-section";
 import { Navbar } from "@/components/layout/navbar";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <HeroSection />
         <StatisticsSection />
         <WhyChooseUsSection />
+        <LearningSection />
       </main>
     </>
   );
