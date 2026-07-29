@@ -1,192 +1,186 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useStatisticsJourney } from "./statistics-journey";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function StatisticsBus() {
-    return (
-        <>
-            {/* =====================================================
-          DESKTOP CINEMATIC JOURNEY
+  const { progress } = useStatisticsJourney();
+
+  /*
+    Journey progress:
+    0.00  Bus enters
+    0.14  Academics
+    0.32  People
+    0.51  Campus
+    0.70  Transport
+    0.86  Exit begins
+    1.00  Complete
+  */
+
+  const busX = `${-12 + progress * 124}%`;
+
+  const busY =
+    progress < 0.25
+      ? 3
+      : progress < 0.5
+        ? -4
+        : progress < 0.75
+          ? 5
+          : -2;
+
+  return (
+    <>
+      {/* =====================================================
+          DESKTOP JOURNEY
       ===================================================== */}
 
-            <motion.div
-                aria-hidden="true"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                    once: true,
-                    amount: 0.25,
-                }}
-                className="
-          pointer-events-none
-          absolute inset-x-0 top-1/2 z-20
-          hidden h-[110px]
-          -translate-y-1/2
-          overflow-visible
-          lg:block
-        "
-            >
-                {/* ===================================================
-            JOURNEY PATH
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2 z-20 hidden h-[110px] -translate-y-1/2 overflow-visible lg:block"
+      >
+        {/* JOURNEY PATH */}
+
+        <svg
+          viewBox="0 0 1200 110"
+          preserveAspectRatio="none"
+          fill="none"
+          className="absolute inset-0 h-full w-full overflow-visible"
+        >
+          {/* Base path */}
+
+          <path
+            d="M35 70C190 67 285 74 390 60C475 49 555 37 650 45C735 52 810 68 900 60C985 53 1060 38 1165 42"
+            stroke="#7C833A"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            opacity="0.1"
+          />
+
+          {/* Progress path */}
+
+          <motion.path
+            d="M35 70C190 67 285 74 390 60C475 49 555 37 650 45C735 52 810 68 900 60C985 53 1060 38 1165 42"
+            stroke="#7C833A"
+            strokeWidth="1.05"
+            strokeLinecap="round"
+            animate={{
+              pathLength: progress,
+              opacity: progress > 0 ? 0.3 : 0,
+            }}
+            transition={{
+              duration: 0.08,
+              ease: "linear",
+            }}
+          />
+
+          {/* Milestones */}
+
+          <g fill="#7C833A">
+            <circle
+              cx="215"
+              cy="68"
+              r="2.4"
+              opacity={progress >= 0.14 ? 0.42 : 0.16}
+            />
+
+            <circle
+              cx="500"
+              cy="47"
+              r="2.4"
+              opacity={progress >= 0.32 ? 0.42 : 0.16}
+            />
+
+            <circle
+              cx="788"
+              cy="61"
+              r="2.4"
+              opacity={progress >= 0.51 ? 0.42 : 0.16}
+            />
+
+            <circle
+              cx="1050"
+              cy="44"
+              r="2.4"
+              opacity={progress >= 0.7 ? 0.42 : 0.16}
+            />
+          </g>
+        </svg>
+
+        {/* ===================================================
+            BUS
+
+            Uses the SAME progress as the cards.
         =================================================== */}
 
-                <svg
-                    viewBox="0 0 1200 110"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    className="absolute inset-0 h-full w-full overflow-visible"
-                >
-                    {/* Permanent quiet route */}
+        <motion.div
+          animate={{
+            left: busX,
+            y: busY,
+            opacity:
+              progress <= 0.02 || progress >= 0.98
+                ? 0
+                : 1,
+          }}
+          transition={{
+            left: {
+              duration: 0.08,
+              ease: "linear",
+            },
+            y: {
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            },
+            opacity: {
+              duration: 0.35,
+            },
+          }}
+          className="absolute top-[16px] will-change-[left,transform,opacity]"
+        >
+          <SchoolBus />
+        </motion.div>
 
-                    <path
-                        d="
-              M1165 42
-              C1060 38 985 53 900 60
-              C810 68 735 52 650 45
-              C555 37 475 49 390 60
-              C285 74 190 67 35 70
-            "
-                        stroke="#7C833A"
-                        strokeWidth="0.8"
-                        strokeLinecap="round"
-                        opacity="0.1"
-                    />
+        {/* Quiet ground thread */}
 
-                    {/* Growing route */}
+        <div className="absolute bottom-[18px] left-[4%] right-[4%] h-px bg-[#7C833A]/[0.035]" />
+      </div>
 
-                    <motion.path
-                        d="
-              M1165 42
-              C1060 38 985 53 900 60
-              C810 68 735 52 650 45
-              C555 37 475 49 390 60
-              C285 74 190 67 35 70
-            "
-                        stroke="#7C833A"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        variants={{
-                            hidden: {
-                                pathLength: 0,
-                                opacity: 0,
-                            },
+      {/* =====================================================
+          MOBILE JOURNEY
 
-                            visible: {
-                                pathLength: 1,
-                                opacity: 0.32,
-
-                                transition: {
-                                    pathLength: {
-                                        duration: 7.2,
-                                        ease: [0.22, 1, 0.36, 1],
-                                    },
-
-                                    opacity: {
-                                        duration: 0.8,
-                                    },
-                                },
-                            },
-                        }}
-                    />
-
-                    {/* Journey milestones */}
-
-                    <g fill="#7C833A">
-                        <circle cx="1050" cy="44" r="2.3" opacity="0.25" />
-                        <circle cx="785" cy="61" r="2.3" opacity="0.25" />
-                        <circle cx="510" cy="45" r="2.3" opacity="0.25" />
-                        <circle cx="230" cy="69" r="2.3" opacity="0.25" />
-                    </g>
-                </svg>
-
-                {/* ===================================================
-            SCHOOL BUS
-
-            Starts outside RIGHT.
-            Travels slowly across the composition.
-            Exits LEFT.
-        =================================================== */}
-                <motion.div
-                    initial={{
-                        x: 0,
-                        opacity: 1,
-                    }}
-                    animate={{
-                        x: [0, 300, 600, 900, 1200, 1600],
-                        opacity: 1,
-                    }}
-                    transition={{
-                        duration: 10,
-                        ease: "linear",
-                        repeat: Infinity,
-                    }}
-                    className="absolute left-[-160px] top-[18px] z-50"
-                >
-                    <SchoolBus />
-                </motion.div>
-                {/* ===================================================
-            VERY SUBTLE GROUND THREAD
-        =================================================== */}
-
-                <div className="absolute bottom-[22px] left-[4%] right-[4%] h-px bg-[#7C833A]/[0.035]" />
-            </motion.div>
-
-            {/* =====================================================
-          MOBILE
-
-          Desktop bus is intentionally removed.
-          Mobile gets a quiet vertical journey.
+          No tiny photographic/SVG bus on mobile.
+          The same progress becomes a vertical story marker.
       ===================================================== */}
 
-            <motion.div
-                aria-hidden="true"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                    once: true,
-                    amount: 0.15,
-                }}
-                className="
-          pointer-events-none
-          absolute bottom-5 left-[17px] top-5 z-20
-          lg:hidden
-        "
-            >
-                <div className="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-[#7C833A]/10" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-5 left-[17px] top-5 z-20 lg:hidden"
+      >
+        <div className="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-[#7C833A]/10" />
 
-                <motion.span
-                    variants={{
-                        hidden: {
-                            top: "3%",
-                            opacity: 0,
-                        },
-
-                        visible: {
-                            top: "92%",
-                            opacity: [0, 0.6, 0.6, 0],
-
-                            transition: {
-                                duration: 5.5,
-                                ease: [0.22, 1, 0.36, 1],
-                            },
-                        },
-                    }}
-                    className="
-            absolute left-1/2
-            block size-[6px]
-            -translate-x-1/2
-            rounded-full
-            border border-[#747E2A]/50
-            bg-[#F8F5EF]
-            motion-reduce:!top-1/2
-            motion-reduce:!opacity-50
-          "
-                />
-            </motion.div>
-        </>
-    );
+        <motion.span
+          animate={{
+            top: `${4 + progress * 90}%`,
+            opacity:
+              progress <= 0.02 || progress >= 0.98
+                ? 0
+                : 0.55,
+          }}
+          transition={{
+            top: {
+              duration: 0.08,
+              ease: "linear",
+            },
+            opacity: {
+              duration: 0.3,
+            },
+          }}
+          className="absolute left-1/2 block size-[6px] -translate-x-1/2 rounded-full border border-[#747E2A]/50 bg-[#F8F5EF]"
+        />
+      </div>
+    </>
+  );
 }
 
 /* =========================================================
