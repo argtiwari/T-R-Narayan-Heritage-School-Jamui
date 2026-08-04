@@ -10,7 +10,6 @@ import { StatisticsSection } from "@/components/home/statistics/statistics-secti
 import { WhyChooseUsSection } from "@/components/home/why-choose-us-section";
 import { LearningSection } from "@/components/home/learning-section";
 import { StudentLifeSection } from "@/components/home/student-life-section";
-import { HeroStatisticsTransition } from "@/components/home/transitions/hero-statistics-transition";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -35,8 +34,7 @@ export default function HomePage() {
         }`}
       >
         <HeroSection />
-        
-        <HeroStatisticsTransition />
+
 
         <StatisticsSection />
 

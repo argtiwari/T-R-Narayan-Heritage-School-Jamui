@@ -28,7 +28,7 @@ export function StatisticsSection() {
           TOP EDITORIAL DIVIDER
       ===================================================== */}
 
-      <div
+      {/* <div
         aria-hidden="true"
         className="mx-auto flex max-w-[1500px] items-center px-5 pt-14 sm:px-7 sm:pt-16 lg:px-10 lg:pt-20 xl:px-12"
       >
@@ -60,7 +60,7 @@ export function StatisticsSection() {
         </svg>
 
         <span className="h-px flex-1 bg-gradient-to-l from-transparent via-[#AAA47C]/30 to-[#AAA47C]/50" />
-      </div>
+      </div> */}
 
       {/* =====================================================
           SECTION CONTENT

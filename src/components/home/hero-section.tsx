@@ -15,6 +15,8 @@ import {
   Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { HeroHighlights } from "@/components/home/hero/hero-highlights";
+import { HeroStatisticsBridge } from "./hero/hero-statistics-bridge";
 
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -416,51 +418,8 @@ export function HeroSection() {
                 </Link>
               </motion.div>
 
-              {/* IDENTITY CARDS */}
-              <motion.div
-                variants={reveal}
-                transition={{ duration: 0.6, ease: EASE }}
-                className="mt-8 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4"
-              >
-                {identityCards.map(({ title, description, icon: Icon }) => (
-                  <article
-                    key={title}
-                    className="group min-h-[145px] rounded-[15px] border border-[#DDD7CA] bg-[#FCFAF4]/88 px-4 py-4 shadow-[0_6px_18px_rgba(63,45,30,0.022)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[#BFC18A] hover:shadow-[0_10px_24px_rgba(63,45,30,0.055)] sm:min-h-[155px]"
-                  >
-                    <Icon
-                      size={23}
-                      strokeWidth={1.3}
-                      aria-hidden="true"
-                      className="text-[#737C29] transition-transform duration-300 group-hover:scale-[1.04]"
-                    />
-
-                    <h2 className="mt-4 text-[14px] font-semibold leading-[1.15] tracking-[-0.02em] text-[#2C211B] xl:text-[15px]">
-                      {title}
-                    </h2>
-
-                    <p className="mt-2.5 text-[10.5px] leading-[1.5] text-[#6F665E] xl:text-[11px]">
-                      {description}
-                    </p>
-                  </article>
-                ))}
-              </motion.div>
-
-              {/* Location */}
-              <motion.div
-                variants={reveal}
-                transition={{ duration: 0.5, ease: EASE }}
-                className="mt-4"
-              >
-                <span className="inline-flex min-h-9 items-center gap-2.5 rounded-full border border-[#D9D3C5] bg-[#FCFAF4]/85 px-4 text-[11px] font-medium text-[#493D35]">
-                  <MapPin
-                    size={14}
-                    strokeWidth={1.6}
-                    className="text-[#747D2C]"
-                    aria-hidden="true"
-                  />
-                  Jamui, Bihar
-                </span>
-              </motion.div>
+             
+              
             </motion.div>
 
             {/* RIGHT */}
@@ -539,7 +498,7 @@ export function HeroSection() {
                   className="hidden size-1 rounded-full bg-[#8D9250]/45 sm:block"
                 />
 
-                <span className="flex items-center gap-2 text-[11px] font-medium text-[#493D35] xl:text-xs">
+                {/* <span className="flex items-center gap-2 text-[11px] font-medium text-[#493D35] xl:text-xs">
                   <MapPin
                     size={16}
                     strokeWidth={1.45}
@@ -547,7 +506,7 @@ export function HeroSection() {
                     aria-hidden="true"
                   />
                   Jamui, Bihar
-                </span>
+                </span> */}
 
                 <span
                   aria-hidden="true"
@@ -567,53 +526,19 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Scroll indicator */}
-          <motion.a
-            href="#statistics"
-            aria-label="Scroll to discover more about TR Narayan Heritage School"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.65,
-              delay: 0.55,
-            }}
-            className="mx-auto mt-5 flex w-fit flex-col items-center text-[#51483F] sm:mt-6"
-          >
-            <span className="flex items-center gap-2 text-[10px] font-medium sm:text-[11px]">
-              Scroll to Discover
-
-              <Leaf
-                size={12}
-                strokeWidth={1.5}
-                className="rotate-12 text-[#747D2C]"
-                aria-hidden="true"
-              />
-            </span>
-
-            <motion.span
-              aria-hidden="true"
-              animate={{
-                scaleY: [0.7, 1, 0.7],
-                opacity: [0.3, 0.65, 0.3],
-              }}
-              transition={{
-                duration: 2.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="mt-2 h-5 w-px origin-top bg-[#776B60]/40"
-            />
-
-            <span className="mt-1 flex size-6 items-center justify-center rounded-full border border-[#7A861F]/20">
-              <ArrowDown
-                size={10}
-                strokeWidth={1.5}
-                className="text-[#747D2C]"
-                aria-hidden="true"
-              />
-            </span>
-          </motion.a>
+          
         </div>
+
+
+                 
+
+          {/* ==================================================
+              HERO IDENTITY → STATISTICS BRIDGE
+          ================================================== */}
+
+    
+
+          <HeroStatisticsBridge /> 
       </section>
     </>
   );
