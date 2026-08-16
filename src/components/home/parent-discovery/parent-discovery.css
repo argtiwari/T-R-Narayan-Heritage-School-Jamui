@@ -855,14 +855,15 @@
 
 
 /* =========================================================
-   MOBILE
-   Horizontal chapter journey remains active.
-   ========================================================= */
-/* =========================================================
-   MOBILE — PARENT DISCOVERY JOURNEY
+   PARENT DISCOVERY — MOBILE
+   Desktop styles remain untouched.
    ========================================================= */
 
 @media (max-width: 767px) {
+
+  /* =======================================================
+     SECTION / VIEWPORT
+     ======================================================= */
 
   .pd-section {
     height: 620vh;
@@ -870,324 +871,640 @@
   }
 
   .pd-viewport {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
     height: 100svh;
-    min-height: 680px;
+    min-height: 600px;
+
     overflow: hidden;
+    isolation: isolate;
   }
 
-  /* Keep every chapter as a real horizontal scene */
-  .pd-chapter {
-    flex: 0 0 100vw;
-    width: 100vw;
-    height: 100%;
-  }
-
-  /* ---------------------------------------------------------
+  /* =======================================================
      BACKGROUND
-     --------------------------------------------------------- */
+     ======================================================= */
 
   .pd-background-photo {
     background-size: cover;
-    background-position: 56% bottom;
+    background-position: 58% bottom;
   }
 
   .pd-background-wash {
     background:
       linear-gradient(
         180deg,
-        rgba(249, 245, 232, 0.62) 0%,
-        rgba(249, 245, 232, 0.24) 48%,
-        rgba(45, 40, 28, 0.16) 100%
+        rgba(249, 245, 232, 0.68) 0%,
+        rgba(249, 245, 232, 0.34) 40%,
+        rgba(61, 56, 41, 0.18) 100%
       );
   }
 
   .pd-background-vignette {
     box-shadow:
-      inset 0 0 70px rgba(53, 43, 27, 0.12);
+      inset 0 0 70px
+      rgba(53, 43, 27, 0.12);
   }
 
-  /* ---------------------------------------------------------
-     CHAPTER HEADER
-     --------------------------------------------------------- */
+
+  /* =======================================================
+     HORIZONTAL CHAPTER
+     IMPORTANT:
+     Every chapter gets EXACT viewport width.
+     ======================================================= */
+
+  .pd-track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+  }
+
+  .pd-chapter {
+    position: relative;
+
+    flex: 0 0 100vw;
+    width: 100vw;
+    max-width: 100vw;
+
+    height: 100%;
+    min-height: 100svh;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+  }
+
+
+  /* =======================================================
+     MAIN CONTENT
+     ======================================================= */
 
   .pd-chapter-inner {
-    top: 3.5%;
+    position: absolute;
+
+    top: 11%;
     left: 50%;
-    width: 88vw;
-    max-width: none;
+
+    width: min(92vw, 420px);
+    max-width: 92vw;
+
+    height: auto;
+
     transform: translateX(-50%);
-    z-index: 16;
+
+    z-index: 20;
+
+    text-align: center;
+
+    box-sizing: border-box;
   }
 
+
+  /* =======================================================
+     CHAPTER NUMBER
+     ======================================================= */
+
   .pd-chapter-topline {
-    gap: 13px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    height: 44px;
   }
 
   .pd-rule {
-    width: 38px;
+    width: 34px;
+    height: 1px;
   }
 
   .pd-number {
-    font-size: 42px;
-    line-height: 1.15;
+    display: block;
+
+    font-size: 40px;
+    line-height: 1;
+
+    transform: translateY(1px);
   }
 
+
+  /* =======================================================
+     LABEL
+     ======================================================= */
+
   .pd-label {
-    margin-top: 5px;
-    font-size: 9px;
+    margin-top: 6px;
+
+    font-size: 7.5px;
+    line-height: 1.2;
+
     letter-spacing: 0.32em;
   }
 
+
+  /* =======================================================
+     SYMBOL
+     ======================================================= */
+
   .pd-symbol {
-    margin: 10px auto 8px;
+    height: 18px;
+
+    margin: 9px auto 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* ---------------------------------------------------------
-     MAIN TITLE
-     --------------------------------------------------------- */
+  .pd-symbol svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  /* =======================================================
+     H1
+     ======================================================= */
 
   .pd-title {
-    width: 100%;
+    width: 94%;
+    max-width: 390px;
+
     margin: 0 auto;
-    font-size: clamp(40px, 11.2vw, 48px);
-    line-height: 0.94;
+
+    font-size: 37px;
+    line-height: 0.96;
+
     letter-spacing: -0.045em;
+
+    text-align: center;
+
+    overflow-wrap: normal;
+    word-break: normal;
   }
+
+
+  /* =======================================================
+     DESCRIPTION
+     ======================================================= */
 
   .pd-description {
     width: 92%;
-    max-width: 430px;
-    margin: 15px auto 0;
-    font-size: 14px;
-    line-height: 1.42;
-    color: #5d554c;
+    max-width: 370px;
+
+    margin: 13px auto 0;
+
+    font-size: 12.5px;
+    line-height: 1.4;
+
+    color: #625b51;
+
+    text-align: center;
   }
 
-  /* ---------------------------------------------------------
-     FEATURE PILLS
-     --------------------------------------------------------- */
+
+  /* =======================================================
+     FEATURES
+     
+     2 columns.
+     3rd item centered.
+     4 item chapter = 2 × 2.
+     ======================================================= */
 
   .pd-features {
-    position: relative;
-    z-index: 18;
+    width: 94%;
+    max-width: 400px;
 
-    width: 100%;
-    margin-top: 17px;
+    margin: 17px auto 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+    display: grid;
 
-    gap: 7px;
-    flex-wrap: wrap;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+
+    align-items: center;
   }
 
+
   .pd-feature {
-    flex: 0 1 calc(50% - 4px);
+    width: 100%;
+    min-width: 0;
 
-    min-height: 49px;
+    min-height: 40px;
 
-    padding: 6px 9px 6px 6px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
 
     gap: 7px;
+
+    padding: 5px 8px 5px 5px;
 
     border-radius: 999px;
 
-    background: rgba(255, 253, 247, 0.94);
+    background:
+      rgba(255, 253, 247, 0.95);
+
+    border:
+      1px solid
+      rgba(100, 90, 63, 0.08);
 
     box-shadow:
-      0 7px 20px rgba(50, 40, 26, 0.11);
+      0 7px 18px
+      rgba(50, 40, 26, 0.10);
 
     backdrop-filter: blur(8px);
+
+    overflow: hidden;
   }
 
-  .pd-feature:last-child {
-    flex-basis: 68%;
+
+  /*
+   * 3-feature chapter:
+   * third pill centered and slightly smaller.
+   */
+
+  .pd-features > .pd-feature:nth-child(3):last-child {
+    grid-column: 1 / -1;
+
+    width: 72%;
+
+    justify-self: center;
   }
+
+
+  /*
+   * 4-feature chapter:
+   * keep all four in 2 × 2 grid.
+   */
+
+  .pd-features > .pd-feature:nth-child(4) {
+    grid-column: auto;
+    width: 100%;
+  }
+
+
+  /* =======================================================
+     FEATURE ICON
+     ======================================================= */
 
   .pd-feature-icon {
-    width: 32px;
-    height: 32px;
-    flex: 0 0 32px;
+    width: 27px;
+    height: 27px;
+
+    min-width: 27px;
+
+    flex: 0 0 27px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
   }
 
   .pd-feature-icon svg {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
   }
+
+
+  /* =======================================================
+     FEATURE TEXT
+     ======================================================= */
 
   .pd-feature-copy {
     min-width: 0;
-    gap: 2px;
+
+    overflow: hidden;
+
+    text-align: left;
   }
 
   .pd-feature-copy strong {
-    font-size: 8px;
-    line-height: 1.1;
-    letter-spacing: 0.09em;
+    display: block;
+
+    width: 100%;
+
+    font-size: 7px;
+    line-height: 1.15;
+
+    letter-spacing: 0.07em;
+
     white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .pd-feature-copy small {
     display: none;
   }
 
-  /* ---------------------------------------------------------
-     ACTION BUTTONS
-     --------------------------------------------------------- */
 
-  .pd-chapter-actions {
-    position: relative;
-    z-index: 20;
-
-    margin-top: 15px;
-
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .pd-primary-action,
-  .pd-secondary-action {
-    min-height: 43px;
-    padding: 10px 14px;
-
-    font-size: 12px;
-    white-space: nowrap;
-  }
-
-  .pd-primary-action span {
-    margin-left: 10px;
-  }
-
-  .pd-secondary-action span {
-    margin-right: 6px;
-  }
-
-  /* ---------------------------------------------------------
-     EDITORIAL PHOTO CARDS
+  /* =======================================================
+     EDITORIAL CARDS
      
-     Smaller + pushed toward edges.
-     They NEVER sit over the main H1.
-     --------------------------------------------------------- */
+     Cards start around 50%.
+     More gap from each other.
+     They stay behind main content.
+     ======================================================= */
 
   .pd-editorial-card {
-    width: 118px;
-    z-index: 10;
+    position: absolute;
+
+    z-index: 6;
+
+    width: 126px;
+
+    pointer-events: none;
+
+    opacity: 0.54;
   }
+
 
   .pd-card-a {
-    left: -2px;
-    top: 32%;
-    transform: rotate(-5deg);
+    left: 18px;
+    top: 58%;
+
+    transform:
+      translateY(0)
+      rotate(-5deg);
   }
+
 
   .pd-card-b {
-    right: -2px;
-    top: 34%;
-    transform: rotate(5deg);
+    right: 18px;
+    top: 58%;
+
+    transform:
+      translateY(0)
+      rotate(5deg);
   }
+
+
+  /* =======================================================
+     PHOTO AREA
+     ======================================================= */
 
   .pd-card-photo {
-    height: 118px;
+    height: 126px;
 
-    border-width: 5px;
-    border-radius: 13px;
+    box-sizing: border-box;
+
+    padding-top: 10px;
+
+    border:
+      5px solid
+      rgba(255, 253, 247, 0.96);
+
+    border-radius: 15px;
 
     box-shadow:
-      0 14px 28px rgba(46, 39, 28, 0.18);
+      0 14px 30px
+      rgba(46, 39, 28, 0.15);
+
+    display: grid;
+    place-items: center;
   }
 
+  .pd-card-photo > span {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+  }
+
+
+  /* =======================================================
+     CARD CAPTION
+     
+     Give the caption enough separation so cards don't
+     visually merge into each other.
+     ======================================================= */
+
   .pd-card-caption {
-    margin: -13px 5px 0;
-    padding: 8px 9px;
+    position: relative;
+
+    margin:
+      -8px
+      8px
+      0;
+
+    padding:
+      9px
+      10px;
+
+    min-height: 40px;
+
+    box-sizing: border-box;
 
     border-radius: 10px;
 
+    background:
+      rgba(255, 253, 248, 0.97);
+
     box-shadow:
-      0 8px 18px rgba(46, 39, 28, 0.13);
+      0 10px 24px
+      rgba(46, 39, 28, 0.13);
+
+    overflow: hidden;
   }
 
   .pd-card-caption strong {
+    display: block;
+
     font-size: 7px;
-    letter-spacing: 0.08em;
+
     line-height: 1.15;
+
+    letter-spacing: 0.08em;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .pd-card-caption small {
+    display: block;
+
     margin-top: 3px;
+
     font-size: 7px;
-    line-height: 1.25;
+    line-height: 1.3;
+
+    color: #777066;
   }
 
-  /* ---------------------------------------------------------
-     BUS
+
+  /* =======================================================
+     ACTION BUTTONS
      
-     Smaller on mobile.
-     Still controlled ONLY by scroll progress.
-     --------------------------------------------------------- */
+     Small.
+     Close to 80%.
+     Never cover feature cards.
+     ======================================================= */
+
+  .pd-chapter-actions {
+    position: absolute;
+
+    left: 50%;
+    top: 80%;
+
+    transform:
+      translateX(-50%);
+
+    width: max-content;
+    max-width: 90vw;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin: 80px 0;
+
+    z-index: 28;
+  }
+
+
+  .pd-primary-action,
+  .pd-secondary-action {
+    min-height: 32px;
+
+    padding:
+      0 9px;
+
+    border-radius: 999px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    box-shadow:
+      0 6px 15px
+      rgba(45, 38, 27, 0.13);
+  }
+
+
+  .pd-primary-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    background: #4c6125;
+    color: #fff;
+  }
+
+  .pd-primary-action span {
+    margin-left: 0;
+  }
+
+
+  .pd-secondary-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    background:
+      rgba(255, 255, 255, 0.93);
+
+    color: #41382e;
+  }
+
+  .pd-secondary-action span {
+    margin-right: 0;
+  }
+
+
+  /* =======================================================
+     BUS
+     ======================================================= */
 
   .pd-bus-layer {
-    z-index: 8;
+    z-index: 9;
 
-    bottom: 13%;
-    height: 72px;
+    bottom: 11%;
 
-    overflow: visible;
+    height: 88px;
+
+    pointer-events: none;
   }
 
   .pd-bus {
-    width: 205px;
+    width: 220px;
+
+    max-width: none;
 
     bottom: 0;
 
     filter:
       drop-shadow(
-        0 10px 8px rgba(30, 26, 18, 0.24)
+        0 12px 9px
+        rgba(30, 26, 18, 0.24)
       );
   }
 
   .pd-bus-road-shadow {
-    bottom: 1px;
-    height: 13px;
+    bottom: 0;
+
+    height: 17px;
   }
 
-  /* ---------------------------------------------------------
+
+  /* =======================================================
      ROAD
-     --------------------------------------------------------- */
+     ======================================================= */
 
   .pd-road-glow {
-    bottom: 13%;
-    height: 1px;
+    bottom: 11%;
+
+    opacity: 0.8;
   }
 
-  /* ---------------------------------------------------------
+
+  /* =======================================================
      JOURNEY PROGRESS
-     --------------------------------------------------------- */
+     ======================================================= */
 
   .pd-progress {
-    left: 5%;
-    right: 5%;
+    z-index: 30;
 
-    bottom: 13px;
+    left: 20px;
+    right: 20px;
+
+    bottom: 9px;
+
+    display: grid;
 
     grid-template-columns:
       1fr auto;
 
-    gap: 7px;
-
-    font-size: 8px;
-    letter-spacing: 0.16em;
+    gap: 6px;
   }
 
   .pd-progress-title {
     font-size: 7px;
-    letter-spacing: 0.17em;
+
+    letter-spacing: 0.15em;
   }
 
   .pd-progress-count {
     font-size: 9px;
-    letter-spacing: 0.12em;
   }
 
   .pd-progress-line {
@@ -1195,80 +1512,149 @@
     grid-row: 2;
 
     width: 100%;
-    height: 2px;
-  }
-
-  .pd-progress-dot {
-    width: 9px;
-    height: 9px;
   }
 
   .pd-progress-hint {
     display: none;
   }
 
-  /* ---------------------------------------------------------
+
+  /* =======================================================
      BOTTOM CAPTION
-     --------------------------------------------------------- */
+     ======================================================= */
 
   .pd-bottom-caption {
-    bottom: 3px;
+    left: 20px;
+    right: 20px;
+
+    bottom: 47px;
 
     font-size: 7px;
-    letter-spacing: 0.16em;
 
-    white-space: nowrap;
-  }
-
-  .pd-bottom-caption small {
-    font-size: 7px;
-  }
-
-  /* ---------------------------------------------------------
-     REDUCED MOTION
-     --------------------------------------------------------- */
-
-  @media (prefers-reduced-motion: reduce) {
-
-    .pd-track,
-    .pd-bus,
-    .pd-road-glow {
-      will-change: auto;
-    }
-
-    .pd-bus,
-    .pd-track {
-      transition: none;
-    }
+    letter-spacing: 0.15em;
   }
 }
+
+
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
 @media (max-width: 390px) {
+
+  .pd-viewport {
+    min-height: 580px;
+  }
+
+  .pd-chapter-inner {
+    top: 8.5%;
+    width: 94vw;
+    max-width: 94vw;
+  }
+
+  .pd-chapter-topline {
+    gap: 9px;
+  }
+
+  .pd-rule {
+    width: 30px;
+  }
+
+  .pd-number {
+    font-size: 38px;
+  }
+
+  .pd-label {
+    font-size: 7px;
+  }
+
+  .pd-symbol {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
   .pd-title {
-    font-size: 40px;
+    width: 94%;
+    font-size: 34px;
+    line-height: 0.96;
   }
 
   .pd-description {
-    font-size: 13px;
+    width: 92%;
+    font-size: 11.5px;
+    line-height: 1.38;
+    margin-top: 11px;
   }
 
-  .pd-editorial-card {
-    width: 132px;
+  .pd-features {
+    width: 94%;
+    gap: 7px;
+    margin-top: 14px;
   }
 
-  .pd-card-photo {
-    height: 132px;
+  .pd-feature {
+    min-height: 38px;
+
+    padding:
+      5px
+      7px
+      5px
+      5px;
+
+    gap: 6px;
   }
 
-  .pd-bus-moving {
-    width: 215px;
+  .pd-feature-icon {
+    width: 25px;
+    height: 25px;
+
+    min-width: 25px;
+    flex-basis: 25px;
   }
 
   .pd-feature-copy strong {
-    font-size: 7px;
+    font-size: 6.3px;
+  }
+
+
+  /* Cards */
+
+  .pd-editorial-card {
+    width: 112px;
+  }
+
+  .pd-card-a {
+    left: -20px;
+    top: 60%;
+  }
+
+  .pd-card-b {
+    right: -20px;
+    top: 50%;
+  }
+
+  .pd-card-photo {
+    height: 112px;
+  }
+
+
+  /* Buttons */
+
+
+  .pd-primary-action,
+  .pd-secondary-action {
+    min-height: 30px;
+
+    padding-inline: 8px;
+
+    font-size: 7.5px;
+  }
+
+
+  /* Bus */
+
+  .pd-bus {
+    width: 200px;
   }
 }
 
@@ -1280,14 +1666,13 @@
 @media (prefers-reduced-motion: reduce) {
 
   .pd-track,
-  .pd-bus-moving,
   .pd-bus,
   .pd-road-glow {
     will-change: auto;
   }
 
-  .pd-primary-action,
-  .pd-secondary-action {
+  .pd-bus,
+  .pd-track {
     transition: none;
   }
 }
