@@ -7,6 +7,9 @@ import BrandIntro from "@/components/home/brand-intro";
 import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/home/hero-section";
 import ParentDiscoverySection from "@/components/home/parent-discovery/parent-discovery-section";
+import LeadershipSection from "@/components/home/leadership/leadership-section";
+
+
 import { WhyChooseUsSection } from "@/components/home/why-choose-us-section";
 import { LearningSection } from "@/components/home/learning-section";
 import { StudentLifeSection } from "@/components/home/student-life-section";
@@ -35,7 +38,8 @@ export default function HomePage() {
         }`}
       >
         <HeroSection />
-        <ParentDiscoverySection />
+             <ParentDiscoverySection />
+              <LeadershipSection />
         {/* <LearningSection /> */}
         
 
