@@ -6,7 +6,13 @@ import {
   useState,
 } from "react";
 
-import { leadershipPeople } from "./leadership-data";
+import {
+  chairman,
+  coordinator,
+  director,
+  principal,
+} from "./leadership-data";
+
 import LeadershipBranch from "./leadership-branch";
 import LeadershipPersonCard from "./leadership-person-card";
 
@@ -14,61 +20,78 @@ import "./leadership.css";
 
 export default function LeadershipSection() {
   const sectionRef = useRef<HTMLElement>(null);
+
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) return;
+    if (!section) {
+      return;
+    }
 
     let raf = 0;
 
-    const update = () => {
+    const updateProgress = () => {
       raf = 0;
 
       const rect = section.getBoundingClientRect();
 
-      const travel = Math.max(
+      const scrollDistance = Math.max(
         1,
         section.offsetHeight - window.innerHeight,
       );
 
       const nextProgress = Math.min(
         1,
-        Math.max(0, -rect.top / travel),
+        Math.max(
+          0,
+          -rect.top / scrollDistance,
+        ),
       );
 
       setProgress(nextProgress);
+
+      section.style.setProperty(
+        "--leadership-progress",
+        String(nextProgress),
+      );
     };
 
-    const requestUpdate = () => {
+    const handleScroll = () => {
       if (!raf) {
-        raf = window.requestAnimationFrame(update);
+        raf = window.requestAnimationFrame(
+          updateProgress,
+        );
       }
     };
 
-    update();
+    const handleResize = () => {
+      updateProgress();
+    };
+
+    updateProgress();
 
     window.addEventListener(
       "scroll",
-      requestUpdate,
+      handleScroll,
       { passive: true },
     );
 
     window.addEventListener(
       "resize",
-      requestUpdate,
+      handleResize,
     );
 
     return () => {
       window.removeEventListener(
         "scroll",
-        requestUpdate,
+        handleScroll,
       );
 
       window.removeEventListener(
         "resize",
-        requestUpdate,
+        handleResize,
       );
 
       if (raf) {
@@ -77,24 +100,16 @@ export default function LeadershipSection() {
     };
   }, []);
 
-  const chairman = leadershipPeople[0];
-  const director = leadershipPeople[1];
-  const principal = leadershipPeople[2];
-  const coordinator = leadershipPeople[3];
-
   /*
-   * Stage 1:
-   * 0 → 0.45
-   *
-   * Stage 2:
-   * 0.45 → 1
+   * The transition deliberately starts
+   * after the hero has had enough time
+   * to breathe.
    */
-
-  const transition = Math.min(
+  const transitionProgress = Math.min(
     1,
     Math.max(
       0,
-      (progress - 0.28) / 0.42,
+      (progress - 0.32) / 0.42,
     ),
   );
 
@@ -103,29 +118,47 @@ export default function LeadershipSection() {
       ref={sectionRef}
       id="leadership"
       className="leadership-section"
+      aria-label="Our Leadership"
     >
-      <div className="leadership-sticky">
-        <div className="leadership-background">
+      <div className="leadership-viewport">
+
+        {/* =================================================
+            BACKGROUND
+            ================================================= */}
+
+        <div
+          className="leadership-background"
+          aria-hidden="true"
+        >
           <div className="leadership-background-image" />
+
           <div className="leadership-background-wash" />
-          <div className="leadership-background-glow" />
+
+          <div className="leadership-background-vignette" />
         </div>
 
-        <div className="leadership-header">
+
+        {/* =================================================
+            HEADER
+            Static — it never participates in the
+            Chairman → Director → Principal transition.
+            ================================================= */}
+
+        <header className="leadership-header">
           <div className="leadership-number">
             <span />
             02
             <span />
           </div>
 
-          <div className="leadership-eyebrow">
+          <div className="leadership-label">
             OUR LEADERSHIP
           </div>
 
-          <h2>
+          <h1>
             People Behind the{" "}
             <em>Vision.</em>
-          </h2>
+          </h1>
 
           <p>
             Guided by wisdom, driven by purpose.
@@ -133,24 +166,30 @@ export default function LeadershipSection() {
             Our leadership is the strength behind
             every child&apos;s bright future.
           </p>
-        </div>
+        </header>
 
-        <LeadershipBranch progress={transition} />
 
-        {/* FIRST STAGE */}
+        {/* =================================================
+            BOTANICAL CONNECTION
+            ================================================= */}
+
+        <LeadershipBranch
+          progress={transitionProgress}
+        />
+
+
+        {/* =================================================
+            HERO STAGE
+            Chairman + Director
+            ================================================= */}
+
         <div
-          className="leadership-stage leadership-stage-primary"
+          className="leadership-scene leadership-scene-primary"
+          aria-label="Chairman and Director"
           style={{
-            opacity: 1 - transition,
-            transform: `
-              translate3d(
-                0,
-                ${transition * -18}vh,
-                0
-              )
-              scale(${1 - transition * 0.055})
-            `,
-          }}
+            "--leadership-stage-progress":
+              transitionProgress,
+          } as React.CSSProperties}
         >
           <LeadershipPersonCard
             person={chairman}
@@ -163,20 +202,19 @@ export default function LeadershipSection() {
           />
         </div>
 
-        {/* SECOND STAGE */}
+
+        {/* =================================================
+            SECOND STAGE
+            Principal + Coordinator
+            ================================================= */}
+
         <div
-          className="leadership-stage leadership-stage-secondary"
+          className="leadership-scene leadership-scene-secondary"
+          aria-label="Principal and Coordinator"
           style={{
-            opacity: transition,
-            transform: `
-              translate3d(
-                0,
-                ${(1 - transition) * -105}vh,
-                0
-              )
-              scale(${0.94 + transition * 0.06})
-            `,
-          }}
+            "--leadership-stage-progress":
+              transitionProgress,
+          } as React.CSSProperties}
         >
           <LeadershipPersonCard
             person={principal}
@@ -189,19 +227,50 @@ export default function LeadershipSection() {
           />
         </div>
 
+
+        {/* =================================================
+            TRANSITION MESSAGE
+            ================================================= */}
+
+        <div
+          className="leadership-transition-copy"
+          aria-hidden="true"
+        >
+          <span>
+            ONE SHARED VISION
+          </span>
+
+          <strong>
+            Different roles.
+            <br />
+            One shared purpose.
+          </strong>
+        </div>
+
+
+        {/* =================================================
+            JOURNEY PROGRESS
+            ================================================= */}
+
         <div className="leadership-progress">
-          <span>OUR LEADERSHIP</span>
+          <span>
+            LEADERSHIP JOURNEY
+          </span>
 
           <div className="leadership-progress-line">
-            <div
+            <i
               style={{
-                transform: `scaleX(${progress})`,
+                transform:
+                  `scaleX(${progress})`,
               }}
             />
           </div>
 
           <strong>
-            {progress < 0.5 ? "01" : "02"} / 02
+            {progress < 0.5
+              ? "01"
+              : "02"}{" "}
+            / 02
           </strong>
         </div>
       </div>

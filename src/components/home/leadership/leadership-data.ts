@@ -1,55 +1,135 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  Eye,
+  Gem,
+  Users,
+  TrendingUp,
+  Lightbulb,
+  BookOpen,
+  GraduationCap,
+  MessageCircle,
+  Sparkles,
+} from "lucide-react";
+
+export type LeadershipPoint = {
+  label: string;
+  icon: LucideIcon;
+};
+
 export type LeadershipPerson = {
-  id: string;
+  id: "chairman" | "director" | "principal" | "coordinator";
   name: string;
   designation: string;
+  eyebrow: string;
   description: string;
   image: string;
-  size: "large" | "medium";
   accent: "gold" | "olive";
+  points: LeadershipPoint[];
 };
 
 export const leadershipPeople: LeadershipPerson[] = [
   {
     id: "chairman",
-    name: "Chairman",
-    designation: "VISION • VALUES • LEGACY",
+    name: "CHAIRMAN",
+    designation: "Vision & Values",
+    eyebrow: "VISION • VALUES • LEGACY",
     description:
-      "Guiding the institution with wisdom, strong principles and a commitment to building a brighter tomorrow.",
+      "Guiding the institution with wisdom, strong principles and a long-term commitment to building a brighter future for every child.",
     image: "/images/leadership/chairman.jpg",
-    size: "large",
     accent: "gold",
+    points: [
+      {
+        label: "Vision",
+        icon: Eye,
+      },
+      {
+        label: "Values",
+        icon: Gem,
+      },
+      {
+        label: "Legacy",
+        icon: Users,
+      },
+    ],
   },
 
   {
     id: "director",
-    name: "Director",
-    designation: "GROWTH • DEVELOPMENT • INNOVATION",
+    name: "DIRECTOR",
+    designation: "Growth & Direction",
+    eyebrow: "GROWTH • DEVELOPMENT • INNOVATION",
     description:
-      "Driving academic excellence through innovation, thoughtful planning and continuous institutional growth.",
+      "Driving academic excellence through thoughtful planning, innovation and continuous institutional growth.",
     image: "/images/leadership/director.jpg",
-    size: "large",
     accent: "olive",
+    points: [
+      {
+        label: "Growth",
+        icon: TrendingUp,
+      },
+      {
+        label: "Development",
+        icon: Lightbulb,
+      },
+      {
+        label: "Innovation",
+        icon: Sparkles,
+      },
+    ],
   },
 
   {
     id: "principal",
-    name: "Principal",
-    designation: "LEARNING • DISCIPLINE • STUDENT GROWTH",
+    name: "PRINCIPAL",
+    designation: "Academic Leadership",
+    eyebrow: "LEARNING • DISCIPLINE • STUDENT GROWTH",
     description:
-      "Ensuring a nurturing and disciplined environment where every child learns, grows and excels.",
+      "Guiding learning, discipline and student development while creating a nurturing environment where every child can learn and excel.",
     image: "/images/leadership/principal.jpg",
-    size: "medium",
     accent: "gold",
+    points: [
+      {
+        label: "Learning",
+        icon: BookOpen,
+      },
+      {
+        label: "Discipline",
+        icon: GraduationCap,
+      },
+      {
+        label: "Growth",
+        icon: TrendingUp,
+      },
+    ],
   },
 
   {
     id: "coordinator",
-    name: "Coordinator",
-    designation: "ACTIVITIES • COMMUNICATION • STUDENT EXPERIENCE",
+    name: "COORDINATOR",
+    designation: "Student Experience",
+    eyebrow: "ACTIVITIES • COMMUNICATION • STUDENT EXPERIENCE",
     description:
-      "Connecting students, activities and opportunities to create a vibrant and enriching school life.",
+      "Connecting students, activities and opportunities to create a vibrant, supportive and enriching school experience.",
     image: "/images/leadership/coordinator.jpg",
-    size: "medium",
     accent: "olive",
+    points: [
+      {
+        label: "Activities",
+        icon: Users,
+      },
+      {
+        label: "Communication",
+        icon: MessageCircle,
+      },
+      {
+        label: "Experience",
+        icon: Eye,
+      },
+    ],
   },
 ];
+
+export const chairman = leadershipPeople[0];
+export const director = leadershipPeople[1];
+export const principal = leadershipPeople[2];
+export const coordinator = leadershipPeople[3];

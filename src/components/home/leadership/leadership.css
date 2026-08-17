@@ -1,21 +1,31 @@
 /* =========================================================
-   LEADERSHIP STORY
+   LEADERSHIP — EDITORIAL STORY
+   Desktop + Mobile
    ========================================================= */
 
 .leadership-section {
+  --leadership-progress: 0;
+  --leadership-stage-progress: 0;
+
   position: relative;
-  height: 260vh;
-  background: #eee6d4;
+  height: 240vh;
+
   overflow: clip;
+
+  background: #eee7d5;
+  color: #342820;
 }
 
-.leadership-sticky {
+.leadership-viewport {
   position: sticky;
   top: 0;
+
   width: 100%;
   height: 100svh;
   min-height: 680px;
+
   overflow: hidden;
+
   isolation: isolate;
 }
 
@@ -27,13 +37,13 @@
 .leadership-background,
 .leadership-background-image,
 .leadership-background-wash,
-.leadership-background-glow {
+.leadership-background-vignette {
   position: absolute;
   inset: 0;
 }
 
 .leadership-background {
-  z-index: -10;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -42,29 +52,30 @@
     url("/images/leadership/leadership-background.jpg");
 
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+
   filter:
-    saturate(.92)
-    contrast(.96);
+    saturate(.78)
+    contrast(.95)
+    brightness(1.03);
+
+  transform: scale(1.035);
 }
 
 .leadership-background-wash {
   background:
     linear-gradient(
       180deg,
-      rgba(249, 245, 232, .82) 0%,
-      rgba(249, 245, 232, .52) 48%,
-      rgba(234, 224, 200, .70) 100%
+      rgba(248, 243, 229, .84) 0%,
+      rgba(248, 243, 229, .56) 43%,
+      rgba(231, 220, 193, .58) 100%
     );
 }
 
-.leadership-background-glow {
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(255, 250, 229, .85),
-      transparent 48%
-    );
+.leadership-background-vignette {
+  box-shadow:
+    inset 0 0 140px
+    rgba(54, 42, 26, .15);
 }
 
 
@@ -74,55 +85,62 @@
 
 .leadership-header {
   position: absolute;
+
   z-index: 30;
 
-  top: 5%;
+  top: 4.5%;
   left: 50%;
 
-  width: min(800px, 80vw);
+  width: min(850px, 88vw);
 
   transform: translateX(-50%);
 
   text-align: center;
-  color: #34261e;
+
+  pointer-events: none;
 }
 
 .leadership-number {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   gap: 24px;
 
-  font:
-    italic 56px/1
-    Georgia,
-    serif;
+  color: #a77d25;
 
-  color: #a57c28;
+  font:
+    italic 56px / 1
+    Georgia,
+    "Times New Roman",
+    serif;
 }
 
 .leadership-number span {
-  width: 72px;
+  width: 68px;
   height: 1px;
-  background: rgba(165, 124, 40, .45);
+
+  background: rgba(167, 125, 37, .42);
 }
 
-.leadership-eyebrow {
-  margin-top: 12px;
+.leadership-label {
+  margin-top: 10px;
 
-  color: #667330;
+  color: #64722f;
 
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 800;
 
   letter-spacing: .38em;
 }
 
-.leadership-header h2 {
-  margin: 22px 0 0;
+.leadership-header h1 {
+  margin: 20px 0 0;
+
+  color: #342820;
 
   font:
-    400 clamp(48px, 5vw, 82px)/.92
+    400 clamp(52px, 5.1vw, 82px) / .92
     Georgia,
     "Times New Roman",
     serif;
@@ -130,270 +148,20 @@
   letter-spacing: -.045em;
 }
 
-.leadership-header h2 em {
-  color: #b2872d;
+.leadership-header h1 em {
+  color: #b48627;
   font-style: normal;
 }
 
 .leadership-header p {
   margin: 20px auto 0;
 
-  font-size: 16px;
-  line-height: 1.55;
+  max-width: 650px;
 
   color: #625a50;
-}
 
-
-/* =========================================================
-   STAGES
-   ========================================================= */
-
-.leadership-stage {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 15;
-
-  transform-origin: center center;
-
-  will-change:
-    transform,
-    opacity;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   PERSON CARD
-   ========================================================= */
-
-.leadership-person {
-  position: absolute;
-
-  display: flex;
-  align-items: center;
-
-  pointer-events: auto;
-}
-
-.leadership-person-info {
-  position: relative;
-
-  width: 360px;
-
-  padding: 34px 34px 30px;
-
-  background:
-    rgba(255, 253, 247, .88);
-
-  border:
-    1px solid
-    rgba(130, 102, 49, .12);
-
-  border-radius: 22px;
-
-  box-shadow:
-    0 24px 60px
-    rgba(58, 45, 26, .14);
-
-  backdrop-filter: blur(10px);
-
-  color: #33271f;
-}
-
-.leadership-portrait-wrap {
-  position: relative;
-
-  flex: 0 0 auto;
-
-  width: 300px;
-  height: 360px;
-
-  margin-right: -35px;
-
-  z-index: 2;
-}
-
-.leadership-portrait-ring {
-  position: absolute;
-  inset: 0;
-
-  border:
-    1px solid
-    rgba(191, 145, 48, .75);
-
-  border-radius:
-    48% 48% 46% 46%;
-
-  transform: rotate(-3deg);
-}
-
-.leadership-portrait {
-  position: absolute;
-
-  inset: 10px;
-
-  overflow: hidden;
-
-  border-radius:
-    48% 48% 45% 45%;
-
-  background: #ded6c1;
-
-  box-shadow:
-    0 22px 45px
-    rgba(52, 40, 25, .2);
-}
-
-.leadership-portrait img {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-}
-
-.leadership-person-info h3 {
-  margin: 7px 0 0;
-
-  font:
-    400 36px/1.05
-    Georgia,
-    serif;
-
-  text-transform: uppercase;
-}
-
-.leadership-designation {
-  display: block;
-
-  color: #64702f;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  line-height: 1.4;
-
-  letter-spacing: .16em;
-}
-
-.leadership-quote-mark {
-  margin-top: 15px;
-
-  color: #b68b2b;
-
-  font:
-    42px/0.5
-    Georgia,
-    serif;
-}
-
-.leadership-person-info p {
-  margin: 12px 0 0;
-
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.55;
-
-  color: #5e564c;
-}
-
-.leadership-mini-line {
-  display: flex;
-
-  gap: 6px;
-
-  margin-top: 20px;
-}
-
-.leadership-mini-line span {
-  width: 28px;
-  height: 1px;
-
-  background: #b68b2b;
-}
-
-
-/* =========================================================
-   CHAIRMAN
-   ========================================================= */
-
-.leadership-chairman {
-  left: 15%;
-  top: 42%;
-
-  transform: translateY(-50%);
-}
-
-.leadership-chairman .leadership-portrait-wrap {
-  width: 330px;
-  height: 395px;
-}
-
-
-/* =========================================================
-   DIRECTOR
-   ========================================================= */
-
-.leadership-director {
-  right: 13%;
-  top: 42%;
-
-  transform:
-    translateY(-50%)
-    scale(.98);
-}
-
-.leadership-director .leadership-portrait-wrap {
-  order: 2;
-
-  margin-left: -35px;
-  margin-right: 0;
-
-  width: 330px;
-  height: 395px;
-}
-
-.leadership-director .leadership-person-info {
-  order: 1;
-}
-
-
-/* =========================================================
-   SECOND STAGE
-   ========================================================= */
-
-.leadership-stage-secondary {
-  z-index: 18;
-}
-
-.leadership-principal {
-  left: 20%;
-  top: 53%;
-
-  transform: translateY(-50%);
-}
-
-.leadership-coordinator {
-  right: 18%;
-  top: 53%;
-
-  transform: translateY(-50%) scale(.9);
-}
-
-.leadership-principal .leadership-portrait-wrap,
-.leadership-coordinator .leadership-portrait-wrap {
-  width: 255px;
-  height: 310px;
-}
-
-.leadership-principal .leadership-person-info,
-.leadership-coordinator .leadership-person-info {
-  width: 320px;
-  padding: 28px;
 }
 
 
@@ -404,59 +172,651 @@
 .leadership-branch {
   position: absolute;
 
-  z-index: 12;
+  z-index: 7;
 
-  left: 4%;
-  right: 4%;
+  left: 3%;
+  right: 3%;
 
-  top: 56%;
+  top: 47%;
 
-  height: 250px;
+  height: 280px;
 
   pointer-events: none;
 
-  opacity: .9;
+  opacity: .78;
 }
 
 .leadership-branch-svg {
   width: 100%;
   height: 100%;
+
   overflow: visible;
 }
 
-.leadership-branch-shadow {
+.leadership-branch-shadow,
+.leadership-branch-path,
+.leadership-branch-twig {
   fill: none;
 
-  stroke:
-    rgba(45, 55, 23, .12);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-  stroke-width: 12;
+.leadership-branch-shadow {
+  stroke:
+    rgba(48, 58, 25, .10);
+
+  stroke-width: 9;
 }
 
 .leadership-branch-path {
-  fill: none;
-
   stroke:
-    #667330;
+    #61702f;
 
   stroke-width: 3;
 
-  stroke-linecap: round;
-
-  stroke-dasharray: 1200;
+  stroke-dasharray: 1;
 
   stroke-dashoffset:
     calc(
-      1200px * (1 - var(--branch-progress))
+      1 - var(--leadership-branch-progress)
+    );
+
+  transition:
+    stroke-dashoffset .08s linear;
+}
+
+.leadership-branch-twig {
+  stroke:
+    rgba(97, 112, 47, .7);
+
+  stroke-width: 2;
+
+  stroke-dasharray: 1;
+
+  stroke-dashoffset:
+    calc(
+      1 - var(--leadership-branch-progress)
     );
 }
 
-.leadership-branch-svg circle {
-  fill: #b68b2b;
+.leadership-branch-leaves ellipse {
+  fill:
+    rgba(99, 115, 47, .72);
 
-  stroke: #fff8df;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.leadership-branch-points circle {
+  fill: #c39834;
+
+  stroke:
+    rgba(255, 249, 225, .95);
 
   stroke-width: 4;
+}
+
+
+/* =========================================================
+   SCENE
+   ========================================================= */
+
+.leadership-scene {
+  position: absolute;
+  inset: 0;
+
+  z-index: 15;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PERSON CARD — BASE
+   ========================================================= */
+
+.leadership-person-card {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+
+  width: min(590px, 44vw);
+
+  pointer-events: auto;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =========================================================
+   PORTRAIT
+   ========================================================= */
+
+.leadership-person-portrait {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 235px;
+  height: 315px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(190, 145, 48, .82);
+
+  border-radius:
+    120px
+    120px
+    24px
+    24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8f3e4,
+      #d9d0b9
+    );
+
+  box-shadow:
+    0 24px 52px
+    rgba(54, 42, 25, .20);
+
+  z-index: 3;
+}
+
+.leadership-person-portrait img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.leadership-person-portrait-frame {
+  position: absolute;
+  inset: 8px;
+
+  border:
+    1px solid
+    rgba(255, 252, 237, .68);
+
+  border-radius:
+    112px
+    112px
+    17px
+    17px;
+
+  pointer-events: none;
+}
+
+.leadership-person-leaf {
+  position: absolute;
+
+  right: 12px;
+  top: 18px;
+
+  display: grid;
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 250, 227, .9);
+
+  color: #9d7628;
+
+  font-size: 12px;
+
+  box-shadow:
+    0 5px 15px
+    rgba(50, 40, 23, .12);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.leadership-person-content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 360px;
+  min-height: 250px;
+
+  margin-left: -28px;
+
+  padding:
+    35px
+    28px
+    25px
+    55px;
+
+  border:
+    1px solid
+    rgba(106, 84, 48, .13);
+
+  border-radius:
+    0
+    23px
+    23px
+    0;
+
+  background:
+    rgba(255, 253, 247, .88);
+
+  box-shadow:
+    0 22px 50px
+    rgba(54, 42, 26, .13);
+
+  backdrop-filter: blur(10px);
+}
+
+.leadership-person-eyebrow {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: #65732f;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .17em;
+
+  line-height: 1.35;
+}
+
+.leadership-person-content h2 {
+  margin: 0;
+
+  color: #342820;
+
+  font:
+    400 34px / 1
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  letter-spacing: -.025em;
+}
+
+.leadership-person-content h3 {
+  margin: 8px 0 0;
+
+  color: #7a642d;
+
+  font:
+    600 14px / 1.3
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+.leadership-person-quote {
+  height: 18px;
+
+  margin-top: 10px;
+
+  color: #b98b2b;
+
+  font:
+    35px / 1
+    Georgia,
+    serif;
+}
+
+.leadership-person-content p {
+  margin: 5px 0 17px;
+
+  color: #625a50;
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.leadership-person-points {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.leadership-person-point {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 8px;
+
+  border:
+    1px solid
+    rgba(106, 84, 48, .10);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 250, 231, .68);
+
+  color: #554c40;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: .05em;
+}
+
+.leadership-person-point-icon {
+  display: grid;
+  place-items: center;
+
+  width: 21px;
+  height: 21px;
+
+  border-radius: 50%;
+
+  background: #f2d47a;
+
+  color: #80631d;
+}
+
+.leadership-person-card--olive
+.leadership-person-point-icon {
+  background: #dce5b8;
+  color: #5f6d2e;
+}
+
+.leadership-person-accent-line {
+  display: flex;
+
+  gap: 5px;
+
+  margin-top: 17px;
+}
+
+.leadership-person-accent-line i {
+  display: block;
+
+  width: 22px;
+  height: 1px;
+
+  background: #b88b2a;
+}
+
+.leadership-person-accent-line i:nth-child(2) {
+  width: 8px;
+}
+
+.leadership-person-accent-line i:nth-child(3) {
+  width: 4px;
+}
+
+
+/* =========================================================
+   CHAIRMAN
+   ========================================================= */
+
+.leadership-chairman {
+  left: 6%;
+  top: 39%;
+
+  transform:
+    translate3d(
+      calc(
+        var(--leadership-stage-progress) * -85px
+      ),
+      calc(
+        var(--leadership-stage-progress) * -45px
+      ),
+      0
+    )
+    scale(
+      calc(
+        1 -
+        var(--leadership-stage-progress) * .12
+      )
+    );
+
+  opacity:
+    calc(
+      1 -
+      var(--leadership-stage-progress) * 1.55
+    );
+}
+
+
+/* =========================================================
+   DIRECTOR
+   ========================================================= */
+
+.leadership-director {
+  right: 6%;
+  top: 42%;
+
+  flex-direction: row-reverse;
+
+  transform:
+    translate3d(
+      calc(
+        var(--leadership-stage-progress) * 85px
+      ),
+      calc(
+        var(--leadership-stage-progress) * -45px
+      ),
+      0
+    )
+    scale(
+      calc(
+        1 -
+        var(--leadership-stage-progress) * .12
+      )
+    );
+
+  opacity:
+    calc(
+      1 -
+      var(--leadership-stage-progress) * 1.55
+    );
+}
+
+.leadership-director
+.leadership-person-content {
+  margin-left: 0;
+  margin-right: -28px;
+
+  padding-left: 28px;
+  padding-right: 55px;
+
+  border-radius:
+    23px
+    0
+    0
+    23px;
+
+  text-align: right;
+}
+
+.leadership-director
+.leadership-person-points {
+  justify-content: flex-end;
+}
+
+.leadership-director
+.leadership-person-accent-line {
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   SECONDARY SCENE
+   ========================================================= */
+
+.leadership-scene-secondary {
+  z-index: 17;
+
+  pointer-events: none;
+}
+
+
+/* Principal */
+
+.leadership-principal {
+  left: 12%;
+  top: 43%;
+
+  transform:
+    translate3d(
+      0,
+      calc(
+        85px -
+        var(--leadership-stage-progress) * 85px
+      ),
+      0
+    )
+    scale(
+      calc(
+        .91 +
+        var(--leadership-stage-progress) * .09
+      )
+    );
+
+  opacity:
+    clamp(
+      0,
+      calc(
+        (var(--leadership-stage-progress) - .16) * 1.75
+      ),
+      1
+    );
+}
+
+
+/* Coordinator */
+
+.leadership-coordinator {
+  right: 9%;
+  top: 47%;
+
+  transform:
+    translate3d(
+      0,
+      calc(
+        110px -
+        var(--leadership-stage-progress) * 110px
+      ),
+      0
+    )
+    scale(
+      calc(
+        .87 +
+        var(--leadership-stage-progress) * .13
+      )
+    );
+
+  opacity:
+    clamp(
+      0,
+      calc(
+        (var(--leadership-stage-progress) - .28) * 1.7
+      ),
+      1
+    );
+}
+
+
+/* Secondary cards slightly smaller */
+
+.leadership-principal
+.leadership-person-portrait {
+  width: 205px;
+  height: 275px;
+}
+
+.leadership-coordinator
+.leadership-person-portrait {
+  width: 185px;
+  height: 250px;
+}
+
+.leadership-principal
+.leadership-person-content {
+  width: 335px;
+}
+
+.leadership-coordinator
+.leadership-person-content {
+  width: 315px;
+}
+
+
+/* =========================================================
+   TRANSITION COPY
+   ========================================================= */
+
+.leadership-transition-copy {
+  position: absolute;
+
+  left: 7%;
+  bottom: 17%;
+
+  z-index: 12;
+
+  opacity:
+    clamp(
+      0,
+      calc(
+        (var(--leadership-stage-progress) - .18) * 2
+      ),
+      1
+    );
+
+  transform:
+    translateY(
+      calc(
+        25px -
+        clamp(
+          0,
+          calc(
+            (var(--leadership-stage-progress) - .18) * 2
+          ),
+          1
+        ) * 25px
+      )
+    );
+}
+
+.leadership-transition-copy span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #65732f;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .24em;
+}
+
+.leadership-transition-copy strong {
+  color: #45382c;
+
+  font:
+    400 27px / 1.05
+    Georgia,
+    serif;
 }
 
 
@@ -469,15 +829,16 @@
 
   z-index: 40;
 
-  left: 6%;
-  right: 6%;
-
-  bottom: 22px;
+  left: 5%;
+  right: 5%;
+  bottom: 19px;
 
   display: grid;
 
   grid-template-columns:
-    auto minmax(160px, 1fr) auto;
+    auto
+    minmax(150px, 1fr)
+    auto;
 
   align-items: center;
 
@@ -485,13 +846,15 @@
 
   color: #fff;
 
-  font-size: 9px;
-
-  letter-spacing: .22em;
-
   text-shadow:
-    0 1px 8px
-    rgba(0, 0, 0, .25);
+    0 1px 8px rgba(0,0,0,.28);
+}
+
+.leadership-progress span,
+.leadership-progress strong {
+  font-size: 8px;
+
+  letter-spacing: .2em;
 }
 
 .leadership-progress-line {
@@ -505,18 +868,58 @@
     rgba(255,255,255,.55);
 }
 
-.leadership-progress-line div {
-  position: absolute;
+.leadership-progress-line i {
+  display: block;
 
-  inset: 0;
+  width: 0;
+  height: 100%;
 
   transform-origin: left center;
 
-  background: #d9a927;
+  background: #dcae35;
 }
 
-.leadership-progress strong {
-  font-size: 10px;
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .leadership-person-card {
+    width: 47vw;
+  }
+
+  .leadership-person-portrait {
+    width: 190px;
+    height: 270px;
+  }
+
+  .leadership-person-content {
+    width: 300px;
+
+    padding:
+      30px
+      22px
+      22px
+      45px;
+  }
+
+  .leadership-person-content h2 {
+    font-size: 29px;
+  }
+
+  .leadership-principal
+  .leadership-person-portrait {
+    width: 175px;
+    height: 240px;
+  }
+
+  .leadership-coordinator
+  .leadership-person-portrait {
+    width: 160px;
+    height: 220px;
+  }
 }
 
 
@@ -527,15 +930,41 @@
 @media (max-width: 767px) {
 
   .leadership-section {
-    height: 300vh;
+    height: 360vh;
   }
 
-  .leadership-sticky {
+  .leadership-viewport {
     min-height: 680px;
   }
 
+
+  /* -------------------------
+     BACKGROUND
+     ------------------------- */
+
+  .leadership-background-image {
+    background-position: center center;
+
+    transform: scale(1.08);
+  }
+
+  .leadership-background-wash {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(248,243,229,.88) 0%,
+        rgba(248,243,229,.66) 45%,
+        rgba(229,218,190,.62) 100%
+      );
+  }
+
+
+  /* -------------------------
+     HEADER
+     ------------------------- */
+
   .leadership-header {
-    top: 5%;
+    top: 4.5%;
 
     width: 90vw;
   }
@@ -547,194 +976,406 @@
   }
 
   .leadership-number span {
-    width: 38px;
+    width: 36px;
   }
 
-  .leadership-eyebrow {
-    margin-top: 8px;
+  .leadership-label {
+    margin-top: 7px;
 
     font-size: 8px;
 
     letter-spacing: .28em;
   }
 
-  .leadership-header h2 {
-    margin-top: 14px;
+  .leadership-header h1 {
+    margin-top: 15px;
 
-    font-size: 40px;
+    font-size: 41px;
     line-height: .94;
   }
 
   .leadership-header p {
     margin-top: 13px;
 
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 11.5px;
+    line-height: 1.45;
   }
 
 
-  /* Primary cards */
+  /* -------------------------
+     BRANCH
+     ------------------------- */
 
-  .leadership-person {
+  .leadership-branch {
+    left: 50%;
+
+    right: auto;
+
+    top: 30%;
+
+    width: 100px;
+    height: 570px;
+
+    transform:
+      translateX(-50%);
+
+    opacity: .62;
+  }
+
+  .leadership-branch-svg {
+    transform:
+      rotate(90deg)
+      scale(.82);
+  }
+
+
+  /* -------------------------
+     SCENE
+     ------------------------- */
+
+  .leadership-person-card {
     display: block;
 
-    width: 86vw;
+    width: 88vw;
+
+    left: 50% !important;
+    right: auto !important;
 
     text-align: center;
   }
 
-  .leadership-chairman,
-  .leadership-director {
-    left: 50%;
-    right: auto;
 
-    top: 53%;
+  /* -------------------------
+     PORTRAITS
+     ------------------------- */
 
-    transform:
-      translate(-50%, -50%);
+  .leadership-person-portrait {
+    width: 145px !important;
+    height: 190px !important;
+
+    margin: 0 auto;
+
+    border-radius:
+      78px
+      78px
+      18px
+      18px;
   }
 
-  .leadership-director {
-    top: 53%;
-  }
 
-  .leadership-portrait-wrap {
-    width: 175px !important;
-    height: 210px !important;
+  /* -------------------------
+     CONTENT
+     ------------------------- */
 
-    margin: 0 auto -20px !important;
-  }
+  .leadership-person-content {
+    width: calc(100% - 26px) !important;
 
-  .leadership-person-info {
-    width: 100% !important;
+    min-height: 0;
+
+    margin:
+      -24px auto
+      0 !important;
 
     padding:
-      28px
-      22px
-      22px;
+      30px
+      18px
+      19px !important;
 
-    border-radius: 18px;
+    border-radius: 18px !important;
+
+    text-align: center !important;
   }
 
-  .leadership-person-info h3 {
-    font-size: 27px;
+  .leadership-person-eyebrow {
+    margin-bottom: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: .11em;
   }
 
-  .leadership-designation {
-    font-size: 8px;
-
-    letter-spacing: .12em;
+  .leadership-person-content h2 {
+    font-size: 26px;
   }
 
-  .leadership-person-info p {
-    font-size: 11px;
+  .leadership-person-content h3 {
+    margin-top: 6px;
 
+    font-size: 12px;
+  }
+
+  .leadership-person-quote {
+    margin-top: 8px;
+
+    font-size: 29px;
+  }
+
+  .leadership-person-content p {
+    margin-top: 4px;
+
+    font-size: 10.5px;
     line-height: 1.45;
   }
 
-  .leadership-quote-mark {
-    margin-top: 9px;
+  .leadership-person-points {
+    justify-content: center !important;
 
-    font-size: 30px;
+    gap: 6px;
   }
 
-
-  /* Secondary */
-
-  .leadership-principal,
-  .leadership-coordinator {
-    left: 50%;
-    right: auto;
-
-    top: 53%;
-
-    width: 78vw;
-
-    transform:
-      translate(-50%, -50%);
-  }
-
-  .leadership-coordinator {
-    top: 53%;
-  }
-
-  .leadership-principal .leadership-portrait-wrap,
-  .leadership-coordinator .leadership-portrait-wrap {
-    width: 150px !important;
-    height: 180px !important;
-
-    margin: 0 auto -18px !important;
-  }
-
-
-  /* Branch */
-
-  .leadership-branch {
-    left: -25%;
-    right: -25%;
-
-    top: 53%;
-
-    height: 230px;
-  }
-
-
-  /* Progress */
-
-  .leadership-progress {
-    left: 20px;
-    right: 20px;
-
-    bottom: 13px;
-
-    grid-template-columns:
-      1fr auto;
-
-    gap: 7px;
+  .leadership-person-point {
+    padding: 4px 7px;
 
     font-size: 7px;
   }
 
-  .leadership-progress-line {
-    grid-column: 1 / -1;
-    grid-row: 2;
+  .leadership-person-point-icon {
+    width: 19px;
+    height: 19px;
   }
 
+  .leadership-person-accent-line {
+    justify-content: center !important;
+
+    margin-top: 13px;
+  }
+
+
+  /* -------------------------
+     CHAIRMAN
+     ------------------------- */
+
+  .leadership-chairman {
+    top: 35%;
+
+    flex-direction: column;
+
+    transform:
+      translate(
+        -50%,
+        calc(
+          55px -
+          var(--leadership-stage-progress) * 120px
+        )
+      )
+      scale(
+        calc(
+          1 -
+          var(--leadership-stage-progress) * .10
+        )
+      );
+
+    opacity:
+      calc(
+        1 -
+        var(--leadership-stage-progress) * 1.75
+      );
+  }
+
+
+  /* -------------------------
+     DIRECTOR
+     ------------------------- */
+
+  .leadership-director {
+    top: 36%;
+
+    flex-direction: column;
+
+    transform:
+      translate(
+        -50%,
+        calc(
+          190px -
+          var(--leadership-stage-progress) * 120px
+        )
+      )
+      scale(
+        calc(
+          1 -
+          var(--leadership-stage-progress) * .10
+        )
+      );
+
+    opacity:
+      calc(
+        1 -
+        var(--leadership-stage-progress) * 1.75
+      );
+  }
+
+  .leadership-director
+  .leadership-person-content {
+    margin: -24px auto 0 !important;
+
+    padding:
+      30px
+      18px
+      19px !important;
+  }
+
+
+  /* -------------------------
+     PRINCIPAL
+     ------------------------- */
+
+  .leadership-principal {
+    top: 34%;
+
+    flex-direction: column;
+
+    transform:
+      translate(
+        -50%,
+        calc(
+          100px -
+          var(--leadership-stage-progress) * 100px
+        )
+      )
+      scale(
+        calc(
+          .92 +
+          var(--leadership-stage-progress) * .08
+        )
+      );
+
+    opacity:
+      clamp(
+        0,
+        calc(
+          (var(--leadership-stage-progress) - .38) * 2.6
+        ),
+        1
+      );
+  }
+
+
+  /* -------------------------
+     COORDINATOR
+     ------------------------- */
+
+  .leadership-coordinator {
+    top: 58%;
+
+    flex-direction: column;
+
+    transform:
+      translate(
+        -50%,
+        calc(
+          110px -
+          var(--leadership-stage-progress) * 110px
+        )
+      )
+      scale(
+        calc(
+          .88 +
+          var(--leadership-stage-progress) * .12
+        )
+      );
+
+    opacity:
+      clamp(
+        0,
+        calc(
+          (var(--leadership-stage-progress) - .52) * 2.3
+        ),
+        1
+      );
+  }
+
+  .leadership-principal
+  .leadership-person-portrait {
+    width: 130px !important;
+    height: 170px !important;
+  }
+
+  .leadership-coordinator
+  .leadership-person-portrait {
+    width: 118px !important;
+    height: 154px !important;
+  }
+
+
+  /* -------------------------
+     TRANSITION COPY
+     ------------------------- */
+
+  .leadership-transition-copy {
+    display: none;
+  }
+
+
+  /* -------------------------
+     PROGRESS
+     ------------------------- */
+
+  .leadership-progress {
+    left: 18px;
+    right: 18px;
+
+    bottom: 11px;
+
+    grid-template-columns:
+      auto
+      1fr
+      auto;
+
+    gap: 8px;
+  }
+
+  .leadership-progress span,
   .leadership-progress strong {
-    font-size: 9px;
+    font-size: 7px;
+
+    letter-spacing: .13em;
   }
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   VERY SMALL PHONES
    ========================================================= */
 
 @media (max-width: 390px) {
 
-  .leadership-header h2 {
-    font-size: 36px;
+  .leadership-header h1 {
+    font-size: 37px;
   }
 
   .leadership-header p {
-    font-size: 11px;
+    font-size: 10.5px;
   }
 
-  .leadership-person-info {
-    padding: 24px 18px 19px;
+  .leadership-person-content {
+    padding:
+      27px
+      16px
+      17px !important;
   }
 
-  .leadership-person-info h3 {
+  .leadership-person-content h2 {
     font-size: 24px;
   }
 
-  .leadership-person-info p {
+  .leadership-person-content p {
     font-size: 10px;
   }
 
-  .leadership-portrait-wrap {
-    width: 155px !important;
-    height: 185px !important;
+  .leadership-chairman {
+    top: 34%;
+  }
+
+  .leadership-director {
+    top: 35%;
+  }
+
+  .leadership-principal {
+    top: 33%;
+  }
+
+  .leadership-coordinator {
+    top: 57%;
   }
 }
 
@@ -745,12 +1386,15 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .leadership-stage,
-  .leadership-branch-path {
+  .leadership-person-card,
+  .leadership-background-image,
+  .leadership-branch-path,
+  .leadership-branch-twig {
     transition: none !important;
   }
 
-  .leadership-branch-path {
-    stroke-dashoffset: 0;
+  .leadership-branch-path,
+  .leadership-branch-twig {
+    stroke-dashoffset: 0 !important;
   }
 }
