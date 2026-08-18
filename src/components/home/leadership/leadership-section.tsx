@@ -20,15 +20,12 @@ import "./leadership.css";
 
 export default function LeadershipSection() {
   const sectionRef = useRef<HTMLElement>(null);
-
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
 
-    if (!section) {
-      return;
-    }
+    if (!section) return;
 
     let raf = 0;
 
@@ -101,9 +98,9 @@ export default function LeadershipSection() {
   }, []);
 
   /*
-   * The transition deliberately starts
-   * after the hero has had enough time
-   * to breathe.
+   * Desktop transition.
+   * Mobile CSS uses --leadership-progress
+   * directly to create 4 individual stages.
    */
   const transitionProgress = Math.min(
     1,
@@ -122,27 +119,19 @@ export default function LeadershipSection() {
     >
       <div className="leadership-viewport">
 
-        {/* =================================================
-            BACKGROUND
-            ================================================= */}
+        {/* BACKGROUND */}
 
         <div
           className="leadership-background"
           aria-hidden="true"
         >
           <div className="leadership-background-image" />
-
           <div className="leadership-background-wash" />
-
           <div className="leadership-background-vignette" />
         </div>
 
 
-        {/* =================================================
-            HEADER
-            Static — it never participates in the
-            Chairman → Director → Principal transition.
-            ================================================= */}
+        {/* HEADER */}
 
         <header className="leadership-header">
           <div className="leadership-number">
@@ -169,19 +158,14 @@ export default function LeadershipSection() {
         </header>
 
 
-        {/* =================================================
-            BOTANICAL CONNECTION
-            ================================================= */}
+        {/* DESKTOP BOTANICAL BRANCH */}
 
         <LeadershipBranch
           progress={transitionProgress}
         />
 
 
-        {/* =================================================
-            HERO STAGE
-            Chairman + Director
-            ================================================= */}
+        {/* PRIMARY DESKTOP STAGE */}
 
         <div
           className="leadership-scene leadership-scene-primary"
@@ -203,10 +187,7 @@ export default function LeadershipSection() {
         </div>
 
 
-        {/* =================================================
-            SECOND STAGE
-            Principal + Coordinator
-            ================================================= */}
+        {/* SECONDARY DESKTOP STAGE */}
 
         <div
           className="leadership-scene leadership-scene-secondary"
@@ -228,9 +209,7 @@ export default function LeadershipSection() {
         </div>
 
 
-        {/* =================================================
-            TRANSITION MESSAGE
-            ================================================= */}
+        {/* TRANSITION COPY */}
 
         <div
           className="leadership-transition-copy"
@@ -248,9 +227,28 @@ export default function LeadershipSection() {
         </div>
 
 
-        {/* =================================================
-            JOURNEY PROGRESS
-            ================================================= */}
+        {/* MOBILE JOURNEY LABEL */}
+
+        <div
+          className="leadership-mobile-stage-label"
+          aria-hidden="true"
+        >
+          <span>LEADERSHIP JOURNEY</span>
+
+          <strong>
+            {progress < 0.25
+              ? "01"
+              : progress < 0.5
+                ? "02"
+                : progress < 0.75
+                  ? "03"
+                  : "04"}
+            <small> / 04</small>
+          </strong>
+        </div>
+
+
+        {/* PROGRESS */}
 
         <div className="leadership-progress">
           <span>
@@ -273,6 +271,7 @@ export default function LeadershipSection() {
             / 02
           </strong>
         </div>
+
       </div>
     </section>
   );

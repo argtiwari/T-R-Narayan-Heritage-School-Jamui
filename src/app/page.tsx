@@ -40,20 +40,18 @@ export default function HomePage() {
         <HeroSection />
              <ParentDiscoverySection />
               <LeadershipSection />
-        {/* <LearningSection /> */}
+        <LearningSection />
         
 
 
-        {/* <DiscoverySection /> */}
 
 
-         {/* <FoundationScene /> */}
 
-        {/* <WhyChooseUsSection /> */}
+        <WhyChooseUsSection />
 
-        {/* <LearningSection /> */}
+        <LearningSection />
 
-        {/* <StudentLifeSection /> */}
+        <StudentLifeSection />
       </main>
     </>
   );
