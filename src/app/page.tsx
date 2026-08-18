@@ -13,6 +13,7 @@ import LeadershipSection from "@/components/home/leadership/leadership-section";
 import { WhyChooseUsSection } from "@/components/home/why-choose-us-section";
 import { LearningSection } from "@/components/home/learning-section";
 import { StudentLifeSection } from "@/components/home/student-life-section";
+import Footer from "@/components/layout/Footer";
 // import DiscoverySection from "@/components/home/statistics/discovery/discovery-section";
 
 export default function HomePage() {
@@ -40,18 +41,11 @@ export default function HomePage() {
         <HeroSection />
              <ParentDiscoverySection />
               <LeadershipSection />
-        <LearningSection />
-        
-
-
-
-
-
-        <WhyChooseUsSection />
-
-        <LearningSection />
-
+        {/* <LearningSection /> */}
+        {/* <WhyChooseUsSection /> */}
+        {/* <LearningSection /> */}
         <StudentLifeSection />
+        <Footer />
       </main>
     </>
   );
