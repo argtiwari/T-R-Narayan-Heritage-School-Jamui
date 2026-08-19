@@ -34,7 +34,7 @@ export const discoveryChapters: DiscoveryChapter[] = [
     description:
       "A strong academic foundation gives every child the confidence to learn, grow and move forward.",
     features: [
-      { title: "CBSE AFFILIATION", benefit: "A structured academic foundation for confident learning.", icon: BookOpen, tone: "gold" },
+      { title: "CBSE CURRICULUM", benefit: "A structured academic foundation for confident learning.", icon: BookOpen, tone: "gold" },
       { title: "ENGLISH MEDIUM", benefit: "Communication that grows with every learning experience.", icon: BookOpen, tone: "olive" },
       { title: "FULLY AC CLASSROOMS", benefit: "Comfortable environments designed for meaningful learning.", icon: Monitor, tone: "blue" },
     ],
