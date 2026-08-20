@@ -1,0 +1,749 @@
+    /* =========================================================
+   TR NARAYAN HERITAGE SCHOOL
+   PREMIUM PAGE LOADER
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT LOADER
+   ========================================================= */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(232, 224, 183, 0.28),
+      transparent 38%
+    ),
+    #f8f5ee;
+
+  color: #382417;
+
+  isolation: isolate;
+
+  animation:
+    loader-enter 0.8s ease both;
+}
+
+
+/* =========================================================
+   TRANSPARENT BOTANICAL GRAPHIC
+   ========================================================= */
+
+.page-loader::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    url("/images/page-loader-graphic.png");
+
+  background-repeat: no-repeat;
+
+  /*
+   * The artwork fills the screen while
+   * keeping the transparent center.
+   */
+  background-size: cover;
+
+  background-position: center;
+
+  opacity: 0.28;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   SOFT CREAM OVERLAY
+   Keeps the artwork subtle and protects
+   text readability.
+   ========================================================= */
+
+.page-loader::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(248, 245, 238, 0.08),
+      rgba(248, 245, 238, 0.38)
+    );
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   EXIT STATE
+   ========================================================= */
+
+.page-loader--closing {
+  pointer-events: none;
+
+  animation:
+    loader-exit
+    0.75s
+    cubic-bezier(0.76, 0, 0.24, 1)
+    forwards;
+}
+
+
+/* =========================================================
+   SOFT BOTANICAL GLOW
+   ========================================================= */
+
+.page-loader-glow {
+  position: absolute;
+
+  width: 38vw;
+  height: 38vw;
+
+  max-width: 560px;
+  max-height: 560px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(126, 145, 76, 0.10),
+      rgba(126, 145, 76, 0.025) 42%,
+      transparent 70%
+    );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.page-loader-glow-left {
+  left: -18vw;
+  top: 18%;
+}
+
+.page-loader-glow-right {
+  right: -18vw;
+  bottom: 10%;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.page-loader-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(90vw, 620px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.page-loader-logo {
+  width: clamp(130px, 16vw, 210px);
+
+  margin-bottom: 52px;
+
+  opacity: 0;
+
+  animation:
+    loader-logo-in
+    1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.15s
+    forwards;
+}
+
+.page-loader-logo img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   SCHOOL NAME
+   ========================================================= */
+
+.page-loader-school {
+  opacity: 0;
+
+  animation:
+    loader-content-in
+    1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.4s
+    forwards;
+}
+
+.page-loader-school h1 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(32px, 4.2vw, 58px);
+
+  font-weight: 500;
+
+  letter-spacing: 0.18em;
+
+  line-height: 1.05;
+
+  color: #332015;
+}
+
+.page-loader-school span {
+  display: block;
+
+  margin-top: 14px;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: clamp(10px, 1vw, 14px);
+
+  font-weight: 500;
+
+  letter-spacing: 0.48em;
+
+  color: #82775f;
+}
+
+
+/* =========================================================
+   BOTANICAL DIVIDER
+   ========================================================= */
+
+.page-loader-divider {
+  width: min(300px, 65vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  margin-top: 48px;
+
+  color: #7c9650;
+
+  opacity: 0;
+
+  animation:
+    loader-content-in
+    1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.7s
+    forwards;
+}
+
+.page-loader-divider i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 150, 80, 0.55)
+    );
+}
+
+.page-loader-divider i:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 150, 80, 0.55),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   SMALL BOTANICAL LEAF
+   ========================================================= */
+
+.page-loader-leaf {
+  width: 48px;
+  height: 24px;
+
+  display: block;
+}
+
+.page-loader-leaf svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   TAGLINE
+   ========================================================= */
+
+.page-loader-tagline {
+  margin: 30px 0 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(15px, 1.5vw, 19px);
+
+  font-style: italic;
+
+  letter-spacing: 0.08em;
+
+  color: #7a664f;
+
+  opacity: 0;
+
+  animation:
+    loader-content-in
+    1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.9s
+    forwards;
+}
+
+
+/* =========================================================
+   PROGRESS TRACK
+   ========================================================= */
+
+.page-loader-progress {
+  position: relative;
+
+  width: min(220px, 52vw);
+
+  height: 1px;
+
+  margin-top: 46px;
+
+  overflow: hidden;
+
+  background:
+    rgba(92, 84, 62, 0.15);
+
+  opacity: 0;
+
+  animation:
+    loader-fade-in
+    0.8s
+    ease
+    1.05s
+    forwards;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.page-loader-progress span {
+  position: absolute;
+
+  inset: 0;
+
+  transform-origin: left center;
+
+  transform: scaleX(0);
+
+  background:
+    linear-gradient(
+      90deg,
+      #7c9650,
+      #b29443,
+      #7c9650
+    );
+
+ animation:
+  loader-progress
+  1.7s
+  cubic-bezier(0.65, 0, 0.35, 1)
+  0.35s
+  forwards;
+}
+
+
+/* =========================================================
+   LOADING TEXT
+   ========================================================= */
+
+.page-loader-loading-text {
+  margin: 18px 0 0;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.38em;
+
+  text-transform: uppercase;
+
+  color: #8a806d;
+
+  opacity: 0;
+
+  animation:
+    loader-fade-in
+    0.8s
+    ease
+    1.15s
+    forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes loader-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes loader-logo-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes loader-content-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes loader-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes loader-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+
+@keyframes loader-exit {
+  from {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      translateY(-18px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .page-loader {
+    min-height: 100dvh;
+  }
+
+
+  /* -----------------------------------------------
+     Graphic
+     ----------------------------------------------- */
+
+  .page-loader::before {
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: 0.22;
+  }
+
+
+  /* -----------------------------------------------
+     Content
+     ----------------------------------------------- */
+
+  .page-loader-content {
+    width: 88vw;
+  }
+
+
+  /* -----------------------------------------------
+     Logo
+     ----------------------------------------------- */
+
+  .page-loader-logo {
+    width: 150px;
+
+    margin-bottom: 38px;
+  }
+
+
+  /* -----------------------------------------------
+     School name
+     ----------------------------------------------- */
+
+  .page-loader-school h1 {
+    font-size: 30px;
+
+    letter-spacing: 0.13em;
+  }
+
+  .page-loader-school span {
+    font-size: 9px;
+
+    letter-spacing: 0.32em;
+  }
+
+
+  /* -----------------------------------------------
+     Divider
+     ----------------------------------------------- */
+
+  .page-loader-divider {
+    margin-top: 38px;
+
+    width: min(260px, 70vw);
+  }
+
+
+  /* -----------------------------------------------
+     Tagline
+     ----------------------------------------------- */
+
+  .page-loader-tagline {
+    margin-top: 24px;
+
+    font-size: 14px;
+  }
+
+
+  /* -----------------------------------------------
+     Progress
+     ----------------------------------------------- */
+
+  .page-loader-progress {
+    margin-top: 38px;
+
+    width: min(190px, 55vw);
+  }
+
+
+  /* -----------------------------------------------
+     Loading text
+     ----------------------------------------------- */
+
+  .page-loader-loading-text {
+    font-size: 8px;
+
+    letter-spacing: 0.28em;
+  }
+
+
+  /* -----------------------------------------------
+     Glow
+     ----------------------------------------------- */
+
+  .page-loader-glow {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .page-loader-glow-left {
+    left: -40vw;
+
+    top: 15%;
+  }
+
+  .page-loader-glow-right {
+    right: -40vw;
+
+    bottom: 12%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .page-loader-logo {
+    width: 125px;
+
+    margin-bottom: 30px;
+  }
+
+  .page-loader-school h1 {
+    font-size: 25px;
+
+    letter-spacing: 0.10em;
+  }
+
+  .page-loader-school span {
+    margin-top: 10px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.26em;
+  }
+
+  .page-loader-divider {
+    margin-top: 30px;
+  }
+
+  .page-loader-tagline {
+    margin-top: 20px;
+
+    font-size: 12px;
+  }
+
+  .page-loader-progress {
+    margin-top: 30px;
+  }
+
+  .page-loader-loading-text {
+    font-size: 7px;
+
+    letter-spacing: 0.22em;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page-loader,
+  .page-loader--closing,
+  .page-loader-logo,
+  .page-loader-school,
+  .page-loader-divider,
+  .page-loader-tagline,
+  .page-loader-progress,
+  .page-loader-loading-text,
+  .page-loader-progress span {
+    animation: none !important;
+  }
+
+
+  .page-loader {
+    opacity: 1;
+  }
+
+
+  .page-loader-logo,
+  .page-loader-school,
+  .page-loader-divider,
+  .page-loader-tagline,
+  .page-loader-progress,
+  .page-loader-loading-text {
+    opacity: 1;
+  }
+
+
+  .page-loader-progress span {
+    transform: scaleX(1);
+  }
+}
