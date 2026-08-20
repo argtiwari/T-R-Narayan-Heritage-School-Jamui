@@ -1,0 +1,156 @@
+/* =========================================================
+   PARENT DISCOVERY — IMAGE LAYER
+   Keeps editorial photo styling isolated from main layout.
+   ========================================================= */
+
+.pd-card-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(238, 241, 218, 0.96),
+      rgba(224, 229, 197, 0.9)
+    );
+
+  isolation: isolate;
+}
+
+/* Actual image */
+
+.pd-card-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: inherit;
+
+  transform: scale(1.001);
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
+}
+
+/* Slight editorial treatment */
+
+.pd-editorial-card:hover .pd-card-image {
+  transform: scale(1.045);
+}
+
+/* Image overlay — keeps text/details readable */
+
+.pd-card-photo::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02) 45%,
+      rgba(58, 55, 28, 0.12) 100%
+    );
+
+  z-index: 1;
+}
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.pd-card-photo > span {
+  position: absolute;
+
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(91, 99, 48, 0.65);
+}
+
+/* =========================================================
+   IMAGE VARIANTS
+   ========================================================= */
+
+/* School / classroom photographs */
+
+.pd-chapter[data-chapter="foundation"] .pd-card-image,
+.pd-chapter[data-chapter="modern-learning"] .pd-card-image {
+  object-position: center center;
+}
+
+/* Labs / activities */
+
+.pd-chapter[data-chapter="discovery"] .pd-card-image {
+  object-position: center center;
+}
+
+/* Sports / student life */
+
+.pd-chapter[data-chapter="beyond-academics"] .pd-card-image {
+  object-position: center center;
+}
+
+/* Care / campus */
+
+.pd-chapter[data-chapter="care-campus"] .pd-card-image {
+  object-position: center center;
+}
+
+/* Transport / safety */
+
+.pd-chapter[data-chapter="safe-journeys"] .pd-card-image {
+  object-position: center center;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .pd-card-photo {
+    border-radius: inherit;
+  }
+
+  .pd-card-image {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .pd-editorial-card:hover .pd-card-image {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-card-image {
+    transition: none;
+    transform: none;
+  }
+
+  .pd-editorial-card:hover .pd-card-image {
+    transform: none;
+  }
+}

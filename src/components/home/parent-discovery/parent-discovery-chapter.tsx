@@ -13,6 +13,9 @@ export default function ParentDiscoveryChapter({
 }: Props) {
   const SymbolIcon = chapter.features[0]?.icon;
 
+  const firstFeature = chapter.features[0];
+  const secondFeature = chapter.features[1];
+
   return (
     <article
       className="pd-chapter"
@@ -45,7 +48,10 @@ export default function ParentDiscoveryChapter({
 
         {/* Small chapter icon */}
 
-        <div className="pd-symbol" aria-hidden="true">
+        <div
+          className="pd-symbol"
+          aria-hidden="true"
+        >
           {SymbolIcon ? (
             <SymbolIcon
               size={24}
@@ -100,12 +106,12 @@ export default function ParentDiscoveryChapter({
           })}
         </div>
 
-        
-{/* =================================================
+        {/* =================================================
             ACTIONS
            ================================================= */}
 
         <div className="pd-chapter-actions">
+
           <button
             type="button"
             className="pd-primary-action"
@@ -137,14 +143,12 @@ export default function ParentDiscoveryChapter({
               Watch Our Story
             </span>
           </button>
+
         </div>
       </div>
 
       {/* =====================================================
-          DECORATIVE EDITORIAL CARDS
-
-          Separate layer so they can never affect
-          the main content layout.
+          EDITORIAL CARD — IMAGE 01
          ===================================================== */}
 
       <div
@@ -152,39 +156,65 @@ export default function ParentDiscoveryChapter({
         aria-hidden="true"
       >
         <div className="pd-card-photo">
-          <span>PHOTO</span>
+
+          {firstFeature?.image ? (
+            <img
+              src={firstFeature.image}
+              alt=""
+              loading="lazy"
+              className="pd-card-image"
+            />
+          ) : (
+            <span>PHOTO</span>
+          )}
+
         </div>
 
         <div className="pd-card-caption">
           <strong>
-            {chapter.features[0]?.title ?? chapter.label}
+            {firstFeature?.title ?? chapter.label}
           </strong>
 
           <small>
-            {chapter.features[0]?.benefit ?? ""}
+            {firstFeature?.benefit ?? ""}
           </small>
         </div>
       </div>
 
+      {/* =====================================================
+          EDITORIAL CARD — IMAGE 02
+         ===================================================== */}
 
       <div
         className={`pd-editorial-card pd-card-b pd-card-${index + 1}`}
         aria-hidden="true"
       >
         <div className="pd-card-photo">
-          <span>PHOTO</span>
+
+          {secondFeature?.image ? (
+            <img
+              src={secondFeature.image}
+              alt=""
+              loading="lazy"
+              className="pd-card-image"
+            />
+          ) : (
+            <span>PHOTO</span>
+          )}
+
         </div>
 
         <div className="pd-card-caption">
           <strong>
-            {chapter.features[1]?.title ?? chapter.label}
+            {secondFeature?.title ?? chapter.label}
           </strong>
 
           <small>
-            {chapter.features[1]?.benefit ?? ""}
+            {secondFeature?.benefit ?? ""}
           </small>
         </div>
       </div>
+
     </article>
   );
 }

@@ -611,7 +611,7 @@ export function StudentLifeSection() {
             className="relative ml-auto w-full lg:w-[88%]"
           >
             <EditorialFrame
-              src="/images/student-life/student-life-belonging.webp"
+              src="/images/student-life/student-life-expression.webp"
               alt="TR Narayan students sharing a relaxed moment together during the school day"
               sizes="(max-width: 1024px) 100vw, 1180px"
               className="aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/8.8]"
@@ -748,7 +748,7 @@ export function StudentLifeSection() {
               }}
             >
               <EditorialFrame
-                src="/images/student-life/student-life-expression.webp"
+                src="/images/student-life/student-life-belonging.jpg"
                 alt="Students expressing themselves creatively and confidently during school life at TR Narayan"
                 sizes="(max-width: 1024px) 100vw, 790px"
                 className="aspect-[3/2]"

@@ -125,7 +125,7 @@ export default function Footer() {
 
             <div className="footer-brand-logo">
               <img
-                src="/images/logo.svg"
+                src="/images\footer\logo.png"
                 alt="TR Narayan Heritage School"
               />
             </div>

@@ -7,6 +7,7 @@ import ParentDiscoveryBus from "./parent-discovery-bus";
 import ParentDiscoveryChapter from "./parent-discovery-chapter";
 import ParentDiscoveryProgress from "./parent-discovery-progress";
 import "./parent-discovery.css";
+import "./parent-discovery-images.css";
 
 export default function ParentDiscoverySection() {
   const sectionRef = useRef<HTMLElement>(null);
