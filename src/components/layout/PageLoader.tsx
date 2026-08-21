@@ -8,20 +8,31 @@ export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
 
- useEffect(() => {
-  const closeTimer = window.setTimeout(() => {
-    setIsClosing(true);
-  }, 2200);
+  useEffect(() => {
+    /*
+     * Loader is already visible from the first render.
+     * We only control when it closes here.
+     */
 
-  const removeTimer = window.setTimeout(() => {
-    setIsLoading(false);
-  }, 3000);
+    const closeTimer = window.setTimeout(() => {
+      setIsClosing(true);
+    }, 2200);
 
-  return () => {
-    window.clearTimeout(closeTimer);
-    window.clearTimeout(removeTimer);
-  };
-}, []);
+    /*
+     * 2200ms
+     * + 750ms exit animation
+     * = approximately 2950ms
+     */
+
+    const removeTimer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(closeTimer);
+      window.clearTimeout(removeTimer);
+    };
+  }, []);
 
   if (!isLoading) {
     return null;
@@ -36,7 +47,7 @@ export default function PageLoader() {
       role="status"
     >
       {/* =================================================
-          SOFT BOTANICAL BACKGROUND
+          SOFT BOTANICAL GLOW
          ================================================= */}
 
       <div
@@ -50,10 +61,14 @@ export default function PageLoader() {
       />
 
       {/* =================================================
-          CONTENT
+          MAIN CONTENT
          ================================================= */}
 
       <div className="page-loader-content">
+
+        {/* =================================================
+            LOGO
+           ================================================= */}
 
         <div className="page-loader-logo">
           <img
@@ -61,6 +76,10 @@ export default function PageLoader() {
             alt="TR Narayan Heritage School"
           />
         </div>
+
+        {/* =================================================
+            SCHOOL NAME
+           ================================================= */}
 
         <div className="page-loader-school">
           <h1>TR NARAYAN</h1>
@@ -70,13 +89,16 @@ export default function PageLoader() {
           </span>
         </div>
 
-        {/* Botanical divider */}
+        {/* =================================================
+            BOTANICAL DIVIDER
+           ================================================= */}
 
         <div
           className="page-loader-divider"
           aria-hidden="true"
         >
           <i />
+
           <span className="page-loader-leaf">
             <svg
               viewBox="0 0 48 24"
@@ -111,14 +133,21 @@ export default function PageLoader() {
               />
             </svg>
           </span>
+
           <i />
         </div>
+
+        {/* =================================================
+            TAGLINE
+           ================================================= */}
 
         <p className="page-loader-tagline">
           Growth Through Nurturing
         </p>
 
-        {/* Loading line */}
+        {/* =================================================
+            PROGRESS
+           ================================================= */}
 
         <div
           className="page-loader-progress"
@@ -126,6 +155,10 @@ export default function PageLoader() {
         >
           <span />
         </div>
+
+        {/* =================================================
+            LOADING TEXT
+           ================================================= */}
 
         <p className="page-loader-loading-text">
           Nurturing Every Beginning
