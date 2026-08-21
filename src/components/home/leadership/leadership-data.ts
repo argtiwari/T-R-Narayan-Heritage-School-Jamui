@@ -60,7 +60,7 @@ export const leadershipPeople: LeadershipPerson[] = [
     eyebrow: "GROWTH • DEVELOPMENT • INNOVATION",
     description:
       "Driving academic excellence through thoughtful planning, innovation and continuous institutional growth.",
-    image: "/images/leadership/director.jpg",
+    image: "/images/leadership/Director.jpg",
     accent: "olive",
     points: [
       {
