@@ -19,7 +19,7 @@ export default function LeadershipPersonCard({
       <div className="leadership-person-portrait">
         <img
           src={person.image}
-          alt={`${person.name} - ${person.designation}`}
+          alt={`${person.name} - ${person.personName ?? person.designation}`}
           draggable={false}
         />
 
@@ -41,8 +41,17 @@ export default function LeadershipPersonCard({
           {person.eyebrow}
         </span>
 
+        {/* Role */}
         <h2>{person.name}</h2>
 
+        {/* Person Name */}
+        {person.personName && (
+          <div className="leadership-person-name">
+            {person.personName}
+          </div>
+        )}
+
+        {/* Role Description */}
         <h3>{person.designation}</h3>
 
         <div

@@ -23,7 +23,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const identityCards = [
   {
-    title: "CBSE Affiliated",
+    title: "CBSE CURRICULUM",
     description: "Affiliation No. 330881",
     icon: BookOpen,
   },
@@ -490,7 +490,7 @@ export function HeroSection() {
                     className="text-[#747D2C]"
                     aria-hidden="true"
                   />
-                  CBSE Affiliated
+                  CBSE CURRICULUM
                 </span>
 
                 <span

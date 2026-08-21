@@ -19,7 +19,7 @@ type IdentityItem = {
 
 const identityItems: IdentityItem[] = [
   {
-    title: "CBSE Affiliated",
+    title: "CBSE CURRICULUM",
     detail: "Affiliation No. 330881",
     icon: BookOpen,
   },

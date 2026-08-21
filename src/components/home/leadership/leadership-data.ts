@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+
 import {
   Eye,
   Gem,
@@ -19,6 +20,7 @@ export type LeadershipPoint = {
 export type LeadershipPerson = {
   id: "chairman" | "director" | "principal" | "coordinator";
   name: string;
+  personName?: string;
   designation: string;
   eyebrow: string;
   description: string;
@@ -30,13 +32,21 @@ export type LeadershipPerson = {
 export const leadershipPeople: LeadershipPerson[] = [
   {
     id: "chairman",
+
     name: "CHAIRMAN",
+    personName: "~Amrendra Kumar Atri",
+
     designation: "Vision & Values",
+
     eyebrow: "VISION • VALUES • LEGACY",
+
     description:
       "Guiding the institution with wisdom, strong principles and a long-term commitment to building a brighter future for every child.",
+
     image: "/images/leadership/chairman.jpg",
+
     accent: "gold",
+
     points: [
       {
         label: "Vision",
@@ -55,13 +65,21 @@ export const leadershipPeople: LeadershipPerson[] = [
 
   {
     id: "director",
+
     name: "DIRECTOR",
+    personName: "~Kanchan Singh",
+
     designation: "Growth & Direction",
+
     eyebrow: "GROWTH • DEVELOPMENT • INNOVATION",
+
     description:
       "Driving academic excellence through thoughtful planning, innovation and continuous institutional growth.",
+
     image: "/images/leadership/Director.jpg",
+
     accent: "olive",
+
     points: [
       {
         label: "Growth",
@@ -80,13 +98,21 @@ export const leadershipPeople: LeadershipPerson[] = [
 
   {
     id: "principal",
+
     name: "PRINCIPAL",
+    personName: "~Shelesh Kumar Jha",
+
     designation: "Academic Leadership",
+
     eyebrow: "LEARNING • DISCIPLINE • STUDENT GROWTH",
+
     description:
       "Guiding learning, discipline and student development while creating a nurturing environment where every child can learn and excel.",
+
     image: "/images/leadership/principal.jpg",
+
     accent: "gold",
+
     points: [
       {
         label: "Learning",
@@ -105,13 +131,21 @@ export const leadershipPeople: LeadershipPerson[] = [
 
   {
     id: "coordinator",
+
     name: "COORDINATOR",
+    personName: "~Zubin Hayat",
+
     designation: "Student Experience",
+
     eyebrow: "ACTIVITIES • COMMUNICATION • STUDENT EXPERIENCE",
+
     description:
       "Connecting students, activities and opportunities to create a vibrant, supportive and enriching school experience.",
+
     image: "/images/leadership/coordinator.jpg",
+
     accent: "olive",
+
     points: [
       {
         label: "Activities",
@@ -130,6 +164,9 @@ export const leadershipPeople: LeadershipPerson[] = [
 ];
 
 export const chairman = leadershipPeople[0];
+
 export const director = leadershipPeople[1];
+
 export const principal = leadershipPeople[2];
+
 export const coordinator = leadershipPeople[3];

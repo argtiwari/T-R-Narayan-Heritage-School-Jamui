@@ -12,8 +12,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const identities = [
   {
-    title: "CBSE Affiliated",
-    detail: "Affiliation No. 330881",
+    title: "CBSE CURRICULUM",
+    detail: "Skill-Oriented Learning",
     icon: BookOpen,
   },
   {

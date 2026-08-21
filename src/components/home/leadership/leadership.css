@@ -16,6 +16,18 @@
   color: #342820;
 }
 
+
+.leadership-person-name {
+  margin: 7px 0 6px;
+  color: #8A6726;
+  font-family: Georgia,"Times New Roman",serif;
+  font-size: 19px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.015em;
+  line-height: 1.2;
+} 
+
 .leadership-viewport {
   position: sticky;
   top: 0;
@@ -674,7 +686,7 @@
 
 .leadership-principal {
   left: 7%;
-  top: 43%;
+  top: 38%;
 
   transform:
     translate3d(
@@ -707,7 +719,7 @@
 
 .leadership-coordinator {
   right: 7%;
-  top: 47%;
+  top: 41%;
 
   transform:
     translate3d(

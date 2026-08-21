@@ -8,7 +8,7 @@ import {
 export const heroHighlights = [
   {
     id: "cbse",
-    title: "CBSE Affiliated",
+    title: "CBSE CURRICULUM",
     detail: "Affiliation No. 330881",
     icon: BookOpen,
   },
