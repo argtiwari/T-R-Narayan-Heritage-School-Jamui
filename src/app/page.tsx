@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import ParentDiscoverySection from "@/components/home/parent-discovery/parent-discovery-section";
 import LeadershipSection from "@/components/home/leadership/leadership-section";
 import { StudentLifeSection } from "@/components/home/student-life-section";
+import { SchoolStrengthSection } from "@/components/home/school-strength-section";
 
 import Footer from "@/components/layout/Footer";
 
@@ -31,6 +32,8 @@ export default function HomePage() {
 
         {/* Leadership */}
         <LeadershipSection />
+
+        <SchoolStrengthSection />
 
         {/* Student Life */}
         <StudentLifeSection />

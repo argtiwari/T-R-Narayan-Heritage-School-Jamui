@@ -1,0 +1,534 @@
+/* =========================================================
+   TR NARAYAN — SCHOOL STRENGTH
+   COMPACT MOVING STRENGTH WALL
+   ========================================================= */
+
+.school-strength {
+  position: relative;
+  overflow: hidden;
+
+  padding: 58px 0 34px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(124, 150, 80, 0.07),
+      transparent 42%
+    ),
+    #f8f5ee;
+
+  color: #33251c;
+}
+
+/* =========================================================
+   SUBTLE GROWTH GRAPHIC
+   ========================================================= */
+
+.strength-growth-graphic {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 900px;
+  height: 180px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-4deg);
+
+  opacity: 0.12;
+
+  pointer-events: none;
+}
+
+.strength-growth-graphic::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #7c9650 20%,
+      #b29443 50%,
+      #7c9650 80%,
+      transparent
+    );
+}
+
+.strength-growth-graphic span {
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  border: 1px solid #8b753c;
+  border-radius: 50%;
+
+  background: #f8f5ee;
+}
+
+.strength-growth-graphic span:nth-child(1) {
+  left: 10%;
+  top: 54%;
+}
+
+.strength-growth-graphic span:nth-child(2) {
+  left: 30%;
+  top: 36%;
+}
+
+.strength-growth-graphic span:nth-child(3) {
+  left: 50%;
+  top: 50%;
+}
+
+.strength-growth-graphic span:nth-child(4) {
+  left: 70%;
+  top: 30%;
+}
+
+.strength-growth-graphic span:nth-child(5) {
+  left: 90%;
+  top: 52%;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.strength-header {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+.strength-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #66751c;
+
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.strength-eyebrow i {
+  display: block;
+
+  width: 20px;
+  height: 1px;
+
+  background: #b29443;
+}
+
+.strength-header h2 {
+  margin: 9px 0 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 500;
+
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.strength-header h2 span {
+  margin-left: 9px;
+
+  color: #a77d28;
+  font-style: italic;
+}
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.strength-marquee {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  margin-top: 10px;
+
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
+}
+
+.strength-marquee-track {
+  display: flex;
+  width: max-content;
+
+  gap: 12px;
+
+  will-change: transform;
+
+  animation:
+    strength-scroll-forward
+    32s
+    linear
+    infinite;
+}
+
+.strength-marquee--reverse
+  .strength-marquee-track {
+  animation:
+    strength-scroll-reverse
+    36s
+    linear
+    infinite;
+}
+
+/* =========================================================
+   PAUSE — DESKTOP
+   ========================================================= */
+
+.strength-marquee:hover
+  .strength-marquee-track {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.strength-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 174px;
+  min-width: 174px;
+  height: 112px;
+
+  padding: 13px;
+
+  border: 1px solid rgba(126, 108, 66, 0.15);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(250, 246, 235, 0.9)
+    );
+
+  box-shadow:
+    0 10px 26px rgba(55, 38, 27, 0.055);
+
+  text-align: center;
+
+  user-select: none;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.strength-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(178, 148, 67, 0.35);
+
+  box-shadow:
+    0 15px 32px rgba(55, 38, 27, 0.09);
+}
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.strength-card-icon {
+  display: grid;
+  place-items: center;
+
+  width: 31px;
+  height: 31px;
+
+  margin-bottom: 6px;
+
+  border: 1px solid rgba(124, 150, 80, 0.2);
+  border-radius: 50%;
+
+  background: #edf0d8;
+
+  color: #65751f;
+}
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.strength-card strong {
+  color: #a77d28;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 29px;
+  font-weight: 500;
+
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.strength-card-label {
+  margin-top: 7px;
+
+  color: #403229;
+
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes strength-scroll-forward {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes strength-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   FOOTER LINE
+   ========================================================= */
+
+.strength-footer-line {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  max-width: 600px;
+
+  margin: 22px auto 0;
+
+  padding: 0 18px;
+}
+
+.strength-footer-line span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(178, 148, 67, 0.4)
+    );
+}
+
+.strength-footer-line span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(178, 148, 67, 0.4),
+      transparent
+    );
+}
+
+.strength-footer-line p {
+  margin: 0;
+
+  color: #82776a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 11px;
+  font-style: italic;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .school-strength {
+    padding-top: 50px;
+  }
+
+  .strength-card {
+    width: 160px;
+    min-width: 160px;
+  }
+
+  .strength-marquee-track {
+    gap: 10px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .school-strength {
+    padding: 48px 0 28px;
+  }
+
+  .strength-header {
+    padding: 0 20px;
+
+    margin-bottom: 21px;
+  }
+
+  .strength-header h2 {
+    font-size: 31px;
+
+    line-height: 1.05;
+  }
+
+  .strength-header h2 span {
+    display: block;
+
+    margin: 5px 0 0;
+  }
+
+  .strength-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  .strength-card {
+    width: 145px;
+    min-width: 145px;
+    height: 104px;
+
+    border-radius: 17px;
+  }
+
+  .strength-card strong {
+    font-size: 27px;
+  }
+
+  .strength-card-label {
+    font-size: 7px;
+  }
+
+  .strength-marquee {
+    margin-top: 8px;
+
+    -webkit-mask-image:
+      linear-gradient(
+        90deg,
+        transparent,
+        black 4%,
+        black 96%,
+        transparent
+      );
+
+    mask-image:
+      linear-gradient(
+        90deg,
+        transparent,
+        black 4%,
+        black 96%,
+        transparent
+      );
+  }
+
+  .strength-footer-line {
+    margin-top: 18px;
+  }
+
+  .strength-footer-line p {
+    font-size: 10px;
+  }
+
+  .strength-growth-graphic {
+    width: 700px;
+
+    opacity: 0.08;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .strength-marquee-track {
+    animation: none !important;
+  }
+
+  .strength-card {
+    transition: none;
+  }
+}
