@@ -1,51 +1,132 @@
 /* =========================================================
    TR NARAYAN — SCHOOL STRENGTH
-   COMPACT MOVING STRENGTH WALL
+   TWO ROW MOVING STRENGTH WALL
    ========================================================= */
 
 .school-strength {
   position: relative;
+  width: 100%;
   overflow: hidden;
 
-  padding: 58px 0 34px;
+  padding: 70px 0 45px;
 
   background:
     radial-gradient(
-      circle at 50% 45%,
-      rgba(124, 150, 80, 0.07),
-      transparent 42%
+      circle at 50% 40%,
+      rgba(236, 230, 201, 0.3),
+      transparent 45%
     ),
-    #f8f5ee;
+    #f8f5ed;
 
-  color: #33251c;
+  color: #382417;
 }
 
+
 /* =========================================================
-   SUBTLE GROWTH GRAPHIC
+   BACKGROUND GRAPHIC
    ========================================================= */
 
-.strength-growth-graphic {
+.strength-background {
   position: absolute;
+  inset: 0;
+  z-index: 0;
 
-  left: 50%;
-  top: 50%;
+  background-image:
+    url("/images/home/school-strength-bg.png");
 
-  width: 900px;
-  height: 180px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-  transform:
-    translate(-50%, -50%)
-    rotate(-4deg);
-
-  opacity: 0.12;
+  opacity: 0.075;
 
   pointer-events: none;
 }
 
-.strength-growth-graphic::before {
+
+/* =========================================================
+   LOGO WATERMARK
+   ========================================================= */
+
+.strength-logo-watermark {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 0;
+
+  width: min(420px, 38vw);
+
+  transform:
+    translate(-50%, -50%);
+
+  opacity: 0.035;
+
+  pointer-events: none;
+}
+
+.strength-logo-watermark img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  filter:
+    grayscale(1)
+    sepia(0.25);
+}
+
+
+/* =========================================================
+   GROWTH LINE
+   ========================================================= */
+
+.strength-growth-line {
+  position: absolute;
+
+  left: -5%;
+  right: -5%;
+  top: 52%;
+
+  z-index: 0;
+
+  height: 100px;
+
+  opacity: 0.28;
+
+  pointer-events: none;
+}
+
+.strength-card-facility {
+  display: block;
+
+  color: #ae8128;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.02em;
+
+  white-space: nowrap;
+}
+
+.strength-card--olive .strength-card-facility {
+  color: #68791f;
+}
+
+.strength-growth-line::before {
   content: "";
 
   position: absolute;
+
   left: 0;
   right: 0;
   top: 50%;
@@ -56,49 +137,49 @@
     linear-gradient(
       90deg,
       transparent,
-      #7c9650 20%,
-      #b29443 50%,
-      #7c9650 80%,
+      rgba(124, 150, 80, 0.22),
+      rgba(178, 148, 67, 0.35),
+      rgba(124, 150, 80, 0.22),
       transparent
     );
+
+  transform: rotate(-2deg);
 }
 
-.strength-growth-graphic span {
+.strength-growth-line span {
   position: absolute;
 
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
 
-  border: 1px solid #8b753c;
+  border: 1px solid
+    rgba(178, 148, 67, 0.32);
+
   border-radius: 50%;
 
-  background: #f8f5ee;
+  background: #f8f5ed;
 }
 
-.strength-growth-graphic span:nth-child(1) {
-  left: 10%;
-  top: 54%;
-}
-
-.strength-growth-graphic span:nth-child(2) {
-  left: 30%;
-  top: 36%;
-}
-
-.strength-growth-graphic span:nth-child(3) {
-  left: 50%;
-  top: 50%;
-}
-
-.strength-growth-graphic span:nth-child(4) {
-  left: 70%;
-  top: 30%;
-}
-
-.strength-growth-graphic span:nth-child(5) {
-  left: 90%;
+.strength-growth-line span:nth-child(1) {
+  left: 14%;
   top: 52%;
 }
+
+.strength-growth-line span:nth-child(2) {
+  left: 36%;
+  top: 42%;
+}
+
+.strength-growth-line span:nth-child(3) {
+  left: 61%;
+  top: 32%;
+}
+
+.strength-growth-line span:nth-child(4) {
+  left: 83%;
+  top: 23%;
+}
+
 
 /* =========================================================
    HEADER
@@ -106,57 +187,99 @@
 
 .strength-header {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+
+  width: min(100% - 40px, 1180px);
+
+  margin: 0 auto 28px;
 
   text-align: center;
-
-  margin-bottom: 25px;
 }
 
 .strength-eyebrow {
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
 
-  color: #66751c;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  color: #69762a;
 
   font-family: Arial, sans-serif;
+
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.25em;
+
+  letter-spacing: 0.27em;
+
   text-transform: uppercase;
 }
 
 .strength-eyebrow i {
   display: block;
 
-  width: 20px;
+  width: 28px;
   height: 1px;
 
-  background: #b29443;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #b29443
+    );
+}
+
+.strength-eyebrow i:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      #b29443,
+      transparent
+    );
 }
 
 .strength-header h2 {
-  margin: 9px 0 0;
+  margin: 14px 0 0;
 
   font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-  font-size: clamp(30px, 3.5vw, 48px);
+  font-size: clamp(40px, 4.5vw, 62px);
+
   font-weight: 500;
 
-  letter-spacing: -0.035em;
   line-height: 1;
+
+  letter-spacing: -0.035em;
+
+  color: #35251c;
 }
 
 .strength-header h2 span {
   margin-left: 9px;
 
-  color: #a77d28;
+  color: #b08329;
+
   font-style: italic;
 }
+
+.strength-header p {
+  max-width: 650px;
+
+  margin: 15px auto 0;
+
+  color: #756b5f;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
 
 /* =========================================================
    MARQUEE
@@ -170,14 +293,14 @@
 
   overflow: hidden;
 
-  margin-top: 10px;
+  padding: 7px 0;
 
   -webkit-mask-image:
     linear-gradient(
       90deg,
       transparent,
-      black 7%,
-      black 93%,
+      #000 6%,
+      #000 94%,
       transparent
     );
 
@@ -185,73 +308,92 @@
     linear-gradient(
       90deg,
       transparent,
-      black 7%,
-      black 93%,
+      #000 6%,
+      #000 94%,
       transparent
     );
 }
 
 .strength-marquee-track {
   display: flex;
+
   width: max-content;
 
-  gap: 12px;
+  gap: 14px;
+
+  padding-left: 14px;
 
   will-change: transform;
 
   animation:
     strength-scroll-forward
-    32s
+    34s
     linear
     infinite;
 }
 
 .strength-marquee--reverse
-  .strength-marquee-track {
-  animation:
-    strength-scroll-reverse
-    36s
-    linear
-    infinite;
+.strength-marquee-track {
+  animation-name:
+    strength-scroll-reverse;
+
+  animation-duration: 38s;
 }
 
+
 /* =========================================================
-   PAUSE — DESKTOP
+   PAUSE
    ========================================================= */
 
 .strength-marquee:hover
-  .strength-marquee-track {
+.strength-marquee-track {
   animation-play-state: paused;
 }
+
 
 /* =========================================================
    CARD
    ========================================================= */
 
 .strength-card {
+  position: relative;
+
   display: flex;
+
+  flex-shrink: 0;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
 
-  width: 174px;
-  min-width: 174px;
-  height: 112px;
+  width: 168px;
+  min-width: 168px;
 
-  padding: 13px;
+  height: 118px;
 
-  border: 1px solid rgba(126, 108, 66, 0.15);
+  padding: 12px;
+
+  overflow: hidden;
+
+  border: 1px solid
+    rgba(126, 108, 66, 0.17);
+
   border-radius: 20px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.92),
-      rgba(250, 246, 235, 0.9)
+      rgba(255, 255, 252, 0.98),
+      rgba(249, 246, 237, 0.96)
     );
 
   box-shadow:
-    0 10px 26px rgba(55, 38, 27, 0.055);
+    0 9px 25px
+      rgba(55, 38, 27, 0.065),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.9);
 
   text-align: center;
 
@@ -263,22 +405,74 @@
     box-shadow 0.3s ease;
 }
 
-.strength-card:hover {
-  transform: translateY(-3px);
-
-  border-color:
-    rgba(178, 148, 67, 0.35);
-
-  box-shadow:
-    0 15px 32px rgba(55, 38, 27, 0.09);
-}
 
 /* =========================================================
-   CARD ICON
+   GLOW BORDER
+   ========================================================= */
+
+.strength-card::before {
+  content: "";
+
+  position: absolute;
+  inset: -1px;
+
+  z-index: 2;
+
+  padding: 1px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 18%,
+      rgba(124, 150, 80, 0.8),
+      rgba(178, 148, 67, 0.8),
+      transparent 82%
+    );
+
+  opacity: 0;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  transition:
+    opacity 0.3s ease;
+
+  pointer-events: none;
+}
+
+.strength-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(178, 148, 67, 0.3);
+
+  box-shadow:
+    0 16px 34px
+      rgba(55, 38, 27, 0.1),
+
+    0 0 22px
+      rgba(178, 148, 67, 0.075);
+}
+
+.strength-card:hover::before {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   ICON
    ========================================================= */
 
 .strength-card-icon {
   display: grid;
+
   place-items: center;
 
   width: 31px;
@@ -286,32 +480,62 @@
 
   margin-bottom: 6px;
 
-  border: 1px solid rgba(124, 150, 80, 0.2);
+  border: 1px solid
+    rgba(104, 119, 37, 0.2);
+
   border-radius: 50%;
 
-  background: #edf0d8;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #f5f7df,
+      #e6ebc8
+    );
 
-  color: #65751f;
+  color: #68791f;
+
+  box-shadow:
+    0 3px 8px
+      rgba(90, 105, 32, 0.07);
 }
 
+.strength-card--gold
+.strength-card-icon {
+  border-color:
+    rgba(178, 148, 67, 0.23);
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #f8efd5,
+      #eee0b8
+    );
+
+  color: #a77d28;
+}
+
+
 /* =========================================================
-   NUMBER
+   VALUE
    ========================================================= */
 
-.strength-card strong {
-  color: #a77d28;
+.strength-card-value {
+  color: #ae8128;
 
   font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-  font-size: 29px;
+  font-size: 30px;
+
   font-weight: 500;
 
   line-height: 0.95;
-  letter-spacing: -0.035em;
+
+  letter-spacing: -0.025em;
 }
+
 
 /* =========================================================
    LABEL
@@ -320,64 +544,93 @@
 .strength-card-label {
   margin-top: 7px;
 
-  color: #403229;
+  color: #4b4037;
 
   font-family: Arial, sans-serif;
-  font-size: 8px;
+
+  font-size: 7.5px;
+
   font-weight: 700;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
+
   line-height: 1.2;
 
   white-space: nowrap;
 }
 
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes strength-scroll-forward {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes strength-scroll-reverse {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
 
 /* =========================================================
-   FOOTER LINE
+   DESCRIPTION
    ========================================================= */
 
-.strength-footer-line {
+.strength-card-description {
+  max-width: 145px;
+
+  margin-top: 5px;
+
+  color: #91867a;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 6.5px;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   ACCENT
+   ========================================================= */
+
+.strength-card-accent {
+  width: 30px;
+  height: 1px;
+
+  margin-top: 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(178, 148, 67, 0.6),
+      transparent
+    );
+}
+
+.strength-card--olive
+.strength-card-accent {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 150, 80, 0.6),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   BRAND DIVIDER
+   ========================================================= */
+
+.strength-brand-divider {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 13px;
 
-  max-width: 600px;
+  width: min(700px, 82%);
 
-  margin: 22px auto 0;
-
-  padding: 0 18px;
+  margin: 7px auto;
 }
 
-.strength-footer-line span {
+.strength-brand-divider span {
   flex: 1;
 
   height: 1px;
@@ -386,7 +639,66 @@
     linear-gradient(
       90deg,
       transparent,
-      rgba(178, 148, 67, 0.4)
+      rgba(178, 148, 67, 0.35)
+    );
+}
+
+.strength-brand-divider span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(178, 148, 67, 0.35),
+      transparent
+    );
+}
+
+.strength-brand-divider b {
+  color: #777f38;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.strength-footer-line {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  width: min(680px, 82%);
+
+  margin: 15px auto 0;
+}
+
+.strength-footer-line span {
+  flex: 1;
+
+  max-width: 110px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(178, 148, 67, 0.32)
     );
 }
 
@@ -394,7 +706,7 @@
   background:
     linear-gradient(
       90deg,
-      rgba(178, 148, 67, 0.4),
+      rgba(178, 148, 67, 0.32),
       transparent
     );
 }
@@ -402,95 +714,103 @@
 .strength-footer-line p {
   margin: 0;
 
-  color: #82776a;
+  color: #786b5c;
 
   font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-  font-size: 11px;
+  font-size: 12px;
+
   font-style: italic;
 
   white-space: nowrap;
 }
 
+
 /* =========================================================
-   TABLET
+   INFINITE ANIMATION
    ========================================================= */
 
-@media (max-width: 900px) {
-  .school-strength {
-    padding-top: 50px;
+@keyframes strength-scroll-forward {
+  from {
+    transform: translateX(0);
   }
 
-  .strength-card {
-    width: 160px;
-    min-width: 160px;
-  }
-
-  .strength-marquee-track {
-    gap: 10px;
+  to {
+    transform: translateX(-25%);
   }
 }
+
+@keyframes strength-scroll-reverse {
+  from {
+    transform: translateX(-25%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .school-strength {
-    padding: 48px 0 28px;
+    padding: 55px 0 38px;
+  }
+
+  .strength-background {
+    background-size: auto 100%;
+    opacity: 0.055;
+  }
+
+  .strength-logo-watermark {
+    width: 270px;
+    opacity: 0.025;
   }
 
   .strength-header {
-    padding: 0 20px;
+    width: calc(100% - 32px);
+    margin-bottom: 23px;
+  }
 
-    margin-bottom: 21px;
+  .strength-eyebrow {
+    gap: 8px;
+    font-size: 7px;
+    letter-spacing: 0.18em;
+  }
+
+  .strength-eyebrow i {
+    width: 18px;
   }
 
   .strength-header h2 {
-    font-size: 31px;
-
-    line-height: 1.05;
+    font-size: clamp(34px, 9vw, 45px);
   }
 
   .strength-header h2 span {
     display: block;
-
     margin: 5px 0 0;
   }
 
-  .strength-eyebrow {
-    font-size: 8px;
-    letter-spacing: 0.18em;
-  }
-
-  .strength-card {
-    width: 145px;
-    min-width: 145px;
-    height: 104px;
-
-    border-radius: 17px;
-  }
-
-  .strength-card strong {
-    font-size: 27px;
-  }
-
-  .strength-card-label {
-    font-size: 7px;
+  .strength-header p {
+    margin-top: 13px;
+    font-size: 10px;
   }
 
   .strength-marquee {
-    margin-top: 8px;
+    padding: 5px 0;
 
     -webkit-mask-image:
       linear-gradient(
         90deg,
         transparent,
-        black 4%,
-        black 96%,
+        #000 4%,
+        #000 96%,
         transparent
       );
 
@@ -498,26 +818,88 @@
       linear-gradient(
         90deg,
         transparent,
-        black 4%,
-        black 96%,
+        #000 4%,
+        #000 96%,
         transparent
       );
   }
 
+  .strength-marquee-track {
+    gap: 10px;
+    padding-left: 10px;
+
+    animation-duration: 28s;
+  }
+
+  .strength-marquee--reverse
+  .strength-marquee-track {
+    animation-duration: 32s;
+  }
+
+  .strength-card {
+    width: 145px;
+    min-width: 145px;
+
+    height: 110px;
+
+    border-radius: 17px;
+  }
+
+  .strength-card-value {
+    font-size: 27px;
+  }
+
+  .strength-card-label {
+    font-size: 6.5px;
+  }
+
+  .strength-card-description {
+    max-width: 125px;
+    font-size: 6px;
+  }
+
+  .strength-brand-divider {
+    width: 88%;
+    gap: 8px;
+  }
+
+  .strength-brand-divider b {
+    font-size: 6px;
+    letter-spacing: 0.14em;
+  }
+
   .strength-footer-line {
-    margin-top: 18px;
+    width: 88%;
+    gap: 9px;
+    margin-top: 12px;
   }
 
   .strength-footer-line p {
     font-size: 10px;
-  }
-
-  .strength-growth-graphic {
-    width: 700px;
-
-    opacity: 0.08;
+    white-space: normal;
+    text-align: center;
   }
 }
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+  .strength-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 9px 25px
+        rgba(55, 38, 27, 0.065);
+  }
+
+  .strength-card:hover::before {
+    opacity: 0;
+  }
+}
+
 
 /* =========================================================
    REDUCED MOTION
@@ -525,10 +907,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .strength-marquee-track {
-    animation: none !important;
+    animation-play-state: paused !important;
   }
 
-  .strength-card {
+  .strength-card,
+  .strength-card::before {
     transition: none;
   }
 }
